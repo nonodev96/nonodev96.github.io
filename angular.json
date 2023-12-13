@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "nonodev96.github.io": {
+    "nonodev96": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -12,12 +12,12 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "nn",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/nonodev96.github.io",
+            "outputPath": "dist/nonodev96",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -30,12 +30,19 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/scss/prism-theme.scss",
+              "node_modules/bootstrap/dist/css/bootstrap-grid.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css",
+              "node_modules/primeng/resources/themes/bootstrap4-light-purple/theme.css",
+              "node_modules/primeng/resources/themes/bootstrap4-dark-purple/theme.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
               "node_modules/prismjs/plugins/command-line/prism-command-line.css",
               "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css",
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css",
-              "node_modules/katex/dist/katex.min.css"
+              "node_modules/katex/dist/katex.min.css",
+              "src/scss/prism-theme.scss",
+              "src/styles.scss"
             ],
             "scripts": [
               "node_modules/prismjs/prism.js",
@@ -91,10 +98,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "nonodev96.github.io:build:production"
+              "buildTarget": "nonodev96:build:production"
             },
             "development": {
-              "buildTarget": "nonodev96.github.io:build:development"
+              "buildTarget": "nonodev96:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -102,7 +109,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "nonodev96.github.io:build"
+            "buildTarget": "nonodev96:build"
           }
         },
         "test": {

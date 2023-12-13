@@ -1,0 +1,26 @@
+.config-button {
+  display: block;
+  position: fixed;
+  width: 3.5rem;
+  height: 3rem;
+  line-height: 3rem;
+  background: var(--primary-color);
+  color: var(--primary-color-text);
+  text-align: center;
+  top: 50%;
+  right: 0;
+  margin-top: -1.5rem;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  transition: background-color var(--transition-duration);
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: -0.25rem 0 1rem #00000026;
+
+  i {
+    font-size: 2rem;
+    line-height: inherit;
+    transform: rotate(0);
+    transition: transform 1s;
+  }
+}

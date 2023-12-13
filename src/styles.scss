@@ -1,3 +1,41 @@
+@import "primeng/resources/themes/bootstrap4-dark-purple/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+@font-face {
+  font-family: DMMono-Italic;
+  src: url(assets/fonts/DM_Mono/DMMono-Italic.ttf);
+}
+
+@font-face {
+  font-family: DMMono-Light;
+  src: url(assets/fonts/DM_Mono/DMMono-Light.ttf);
+}
+
+@font-face {
+  font-family: DMMono-LightItalic;
+  src: url(assets/fonts/DM_Mono/DMMono-LightItalic.ttf);
+}
+
+@font-face {
+  font-family: DMMono-Medium;
+  src: url(assets/fonts/DM_Mono/DMMono-Medium.ttf);
+}
+
+@font-face {
+  font-family: DMMono-MediumItalic;
+  src: url(assets/fonts/DM_Mono/DMMono-MediumItalic.ttf);
+}
+
+@font-face {
+  font-family: DMMono-Regular;
+  src: url(assets/fonts/DM_Mono/DMMono-Regular.ttf);
+}
+
+body {
+  font-family: "DMMono-Regular", sans-serif
+}
+
 /* You can add global styles to this file, and also import other style files */
 .markdown-clipboard-button {
   background-color: rgba(255, 255, 255, 0.07);

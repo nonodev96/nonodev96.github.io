@@ -1,0 +1,14 @@
+<p-menu [model]="items">
+  <ng-template pTemplate="item" let-item>
+    <a class="p-menuitem-link flex justify-content-between align-items-center p-3">
+      <div>
+        <span [class]="item.icon"></span>
+        <span class="ml-2">{{item.label}}</span>
+      </div>
+      <div>
+        <span *ngIf="item.shortcut" [class]="item.shortcutClass">{{ item.shortcut }}</span>
+        <p-badge *ngIf="item.badge" [value]="item.badge" [severity]="item.badgeSeverity"></p-badge>
+      </div>
+    </a>
+  </ng-template>
+</p-menu>

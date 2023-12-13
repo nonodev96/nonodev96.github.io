@@ -1,0 +1,45 @@
+<p-toast></p-toast>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>{{'hello'|translate}}</h3>
+
+      <p-button class="mr-2" (onClick)="changeLanguage('es-ES')">Change lang
+        <span class="fi fi-es"></span>
+      </p-button>
+      <p-button class="mr-2" (onClick)="changeLanguage('en-GB')">Change lang
+        <span class="fi fi-gb ml-1"></span>
+      </p-button>
+      <p-button class="mr-2" (onClick)="message()">Message</p-button>
+      <p-button class="mr-2" (onClick)="parseYAML()">Parse YML</p-button>
+
+      <i class="bi bi-8-circle"></i>
+
+      <span class="fi fi-gr"></span>
+      <span class="fi fi-gr fis"></span>
+
+      <span class="pi pi-search"></span>
+
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <p-timeline [value]="events">
+        <ng-template pTemplate="content" let-event>
+          <span [class]="event.icon"></span>
+          {{ event.status }}
+        </ng-template>
+        <ng-template pTemplate="opposite" let-event>
+          <small class="p-text-secondary">{{ event.date }}</small>
+        </ng-template>
+      </p-timeline>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+
+    </div>
+  </div>
+</div>

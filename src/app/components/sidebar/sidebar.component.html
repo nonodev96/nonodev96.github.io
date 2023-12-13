@@ -1,0 +1,12 @@
+<p-button (click)="sidebarVisible = !sidebarVisible" icon="pi pi-arrow-right"></p-button>
+<p-sidebar [(visible)]="sidebarVisible" position="left">
+  <div class="layout-sidebar">
+    <div class="sidebar-header">
+      <h3>Sidebar</h3>
+    </div>
+
+    <div class="layout-menu-container">
+      <nn-menu></nn-menu>
+    </div>
+  </div>
+</p-sidebar>

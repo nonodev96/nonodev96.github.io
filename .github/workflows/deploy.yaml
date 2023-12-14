@@ -16,7 +16,7 @@ jobs:
       - name: Install deps
         run: npm i
       - name: Build app bundle
-        run: npm run build:prod
+        run: npm run build
 
   deploy:
     needs: build

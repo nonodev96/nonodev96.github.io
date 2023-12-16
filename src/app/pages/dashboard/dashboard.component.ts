@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-article',
+  selector: 'nn-dashboard',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './article.component.html',
-  styleUrl: './article.component.scss'
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.scss'
 })
-export class ArticleComponent {
+export class DashboardComponent {
 
 }

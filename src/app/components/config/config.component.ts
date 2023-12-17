@@ -3,9 +3,11 @@ import {CommonModule} from '@angular/common';
 import {ButtonModule} from "primeng/button";
 import {MenuComponent} from "@app/components/menu/menu.component";
 import {SidebarModule} from "primeng/sidebar";
-import {Router, RouterLink} from "@angular/router";
+import {NavigationError, Router, RouterLink} from "@angular/router";
 import {MessageService} from "primeng/api";
 import {MessagesModule} from "primeng/messages";
+import {ConfigService} from "@app/services/config/config.service";
+import {filter, tap} from "rxjs";
 
 @Component({
   selector: 'nn-config',
@@ -15,23 +17,39 @@ import {MessagesModule} from "primeng/messages";
   styleUrl: './config.component.scss'
 })
 export class ConfigComponent {
-  sidebarConfigVisible: boolean = false;
 
   constructor(private router: Router,
-              private messageService: MessageService) {
+              private messageService: MessageService,
+              public configService: ConfigService) {
+
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationError),
+      tap(event => {
+        console.log("error")
+      })
+    );
   }
 
-  async goToHome() {
-    await this.router.navigate(['/home']);
-  }
-
-  async goTo(link: any | string | string[]) {
+  goTo(link: any | string | string[]) {
     this.router.navigate(link)
+      .then((isSuccess)=>{
+        console.log("then", isSuccess)
+        this.configService.sidebarConfigVisible = false
+      })
       .catch(() => {
-        console.log('inside catch block');
-        this.messageService.add({severity: 'error', summary: 'Page not found', detail: `Error, page ${link} not found`});
-        this.router.navigate(['/404']);
-      }).finally(() => {
-    });
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Page not found',
+          detail: `Error, page ${link} not found`
+        });
+        this.router.navigate(['/error404']);
+      })
+      .finally(() => {
+      });
+  }
+
+  close() {
+    this.configService.sidebarConfigVisible = false
   }
 }

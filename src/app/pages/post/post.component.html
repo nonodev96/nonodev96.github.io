@@ -1,9 +1,6 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <markdown clipboard emoji mermaid>
-        {{content}}
-      </markdown>
-    </div>
-  </div>
-</div>
+<nn-card [title]="post().title"
+         [cover]="post().cover"
+         [chips]="post().chips"
+         [authors]="post().authors"
+         [summary]="post().summary"
+         [content]="post().content"></nn-card>

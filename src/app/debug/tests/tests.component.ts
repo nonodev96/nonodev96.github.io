@@ -5,7 +5,7 @@ import { MessageService, SharedModule } from "primeng/api";
 import { TimelineModule } from "primeng/timeline";
 import { ToastModule } from "primeng/toast";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
-import { Language_t } from "../../../type";
+import { Language_t } from "@app/types";
 import { HtmlService } from "@app/services/html/html.service";
 
 @Component({

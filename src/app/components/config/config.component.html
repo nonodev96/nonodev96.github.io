@@ -1,17 +1,27 @@
-<p-button class="config-button" (onClick)="sidebarConfigVisible = !sidebarConfigVisible"><i class="pi pi-cog"></i></p-button>
-<p-sidebar [(visible)]="sidebarConfigVisible" position="right">
+<p-button class="config-button" (onClick)="configService.sidebarConfigVisible = !configService.sidebarConfigVisible"><i class="pi pi-cog"></i>
+</p-button>
+<p-sidebar [(visible)]="configService.sidebarConfigVisible" position="right">
   <h3>Config</h3>
+  <p-button (onClick)="close()">Close</p-button>
+  <br>
+  <br>
   <p-button (onClick)="goTo(['/home'])">Go to home</p-button>
   <br>
   <br>
   <p-button (onClick)="goTo(['/lorem'])">Go to lorem</p-button>
   <br>
   <br>
-  <p-button (onClick)="goTo(['/post', '5'])">Go to post 5</p-button>
+  <p-button (onClick)="goTo(['/article/post', '5'])">Go to post 5</p-button>
+  <br>
+  <br>
 
-  <br>
-  <br>
   <a routerLink="/home"> Link to home page </a><br>
   <a routerLink="/lorem"> Link to lorem page </a><br>
-  <a routerLink="/post/5"> Link to Post page </a>
+  <a routerLink="/debug"> Link to debug </a><br>
+
+  <hr>
+
+  <a routerLink="/article"> Link to list of articles </a><br>
+  <a routerLink="/article/post/0"> Link to post 0 </a><br>
+  <a routerLink="/pepe">Error </a>
 </p-sidebar>

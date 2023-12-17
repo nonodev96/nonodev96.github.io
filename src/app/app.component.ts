@@ -8,11 +8,12 @@ import {TimelineModule} from "primeng/timeline";
 import {CardModule} from "primeng/card";
 import {MessageService} from "primeng/api";
 import {ToastModule} from "primeng/toast";
+import {ConfigComponent} from "@app/components/config/config.component";
 
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [TranslateModule, CommonModule, RouterOutlet, MarkdownComponent, ButtonModule, TimelineModule, CardModule, ToastModule],
+  imports: [TranslateModule, CommonModule, RouterOutlet, MarkdownComponent, ButtonModule, TimelineModule, CardModule, ToastModule, ConfigComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",

@@ -5,6 +5,7 @@ import matter from "front-matter";
 import {CardComponent} from "@app/components/card/card.component";
 import {BlogService} from "@app/services/blog/blog.service";
 import {Matter_t, Post_t} from "@app/types";
+import {Router, UrlTree} from "@angular/router";
 
 @Component({
   selector: 'nn-post',
@@ -23,15 +24,18 @@ export class PostComponent implements OnInit {
     summary: "",
     content: ""
   });
+  urlTree: UrlTree = new UrlTree();
 
-  constructor(public blogService: BlogService) {
+  constructor(public blogService: BlogService, private router: Router) {
 
   }
 
 
   ngOnInit(): void {
+    this.urlTree = this.router.parseUrl(this.router.url);
+    console.log({url: this.urlTree})
     this.blogService
-      .getPost("template.md")
+      .getPost("001_notation.md")
       .subscribe((post) => {
         const {attributes, body} = matter(post) as Matter_t
         this.post.set({

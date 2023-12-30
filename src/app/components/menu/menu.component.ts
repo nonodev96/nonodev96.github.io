@@ -19,13 +19,13 @@ export class MenuComponent {
       label: 'Options',
       items: [
         {
-          label: '<span class="text-xl font-bold">Refresh</span>',
+          label: 'Refresh',
           escape: false,
           icon: 'pi pi-refresh',
           iconClass: 'text-xl'
         },
         {
-          label: '<span class="text-xl font-bold">Delete</span>',
+          label: 'Delete',
           escape: false,
           icon: 'pi pi-times',
           iconClass: 'text-xl'

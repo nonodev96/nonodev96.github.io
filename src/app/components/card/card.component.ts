@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MarkdownComponent} from "ngx-markdown";
+import {KatexOptions, MarkdownComponent} from "ngx-markdown";
 import {ButtonModule} from "primeng/button";
 import {ChipModule} from "primeng/chip";
 import {PostAuthors_t, PostChips_t} from "@app/types";
@@ -33,11 +33,19 @@ export class CardComponent {
   authors: PostAuthors_t = [{
     id: 0,
     name: 'nonodev96',
-    image: 'assets/development/avatar.png'
+    image: '/assets/development/avatar.png'
   }]
 
   @Input({ required: true })
   summary: string = 'Sodales massa, morbi convallis'
+
+  @Input({ required: false })
+  katexOptions: KatexOptions = {
+    displayMode: true,
+    strict: 'warn'
+
+  };
+
 
   @Input({ required: true })
   content: string = "";

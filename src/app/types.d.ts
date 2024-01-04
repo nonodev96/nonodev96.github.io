@@ -1,4 +1,4 @@
-export type Language_t = "es-ES" | "en-GB"
+export type Language_t = 'es-ES' | 'en-GB'
 
 export type InfoBlog_t = {
   data: FileBlog_t[]

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BadgeModule } from "primeng/badge";
-import { MenuModule } from "primeng/menu";
-import { MenuItem } from "primeng/api";
+import { BadgeModule } from 'primeng/badge';
+import { MenuModule } from 'primeng/menu';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'nn-menu',

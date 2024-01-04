@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {InfoBlog_t} from "@app/types";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { InfoBlog_t } from '@app/types';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,6 @@ export class BlogService {
   }
 
   getPost(name: string): Observable<string> {
-    return this.http.get(this.apiUrl_Post + name, {responseType: 'text'});
+    return this.http.get(this.apiUrl_Post + name, { responseType: 'text' });
   }
 }

@@ -1,11 +1,12 @@
-import {Component, OnInit, signal} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {MarkdownComponent} from "ngx-markdown";
-import matter from "front-matter";
-import {CardComponent} from "@app/components/card/card.component";
-import {BlogService} from "@app/services/blog/blog.service";
-import {Matter_t, Post_t} from "@app/types";
-import {Router, UrlTree} from "@angular/router";
+import { Component, OnInit, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MarkdownComponent } from 'ngx-markdown';
+import matter from 'front-matter';
+
+import { CardComponent } from '@app/components/card/card.component';
+import { BlogService } from '@app/services/blog/blog.service';
+import { Matter_t, Post_t } from '@app/types';
+import { Router, UrlTree } from '@angular/router';
 
 @Component({
   selector: 'nn-post',
@@ -17,12 +18,12 @@ import {Router, UrlTree} from "@angular/router";
 export class PostComponent implements OnInit {
 
   post = signal<Post_t>({
-    title: "",
-    cover: "",
+    title: '',
+    cover: '',
     chips: [],
     authors: [],
-    summary: "",
-    content: ""
+    summary: '',
+    content: ''
   });
   urlTree: UrlTree = new UrlTree();
 
@@ -33,11 +34,11 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     this.urlTree = this.router.parseUrl(this.router.url);
-    console.log({url: this.urlTree})
+    console.log({ url: this.urlTree })
     this.blogService
-      .getPost("001_notation.md")
+      .getPost('001_notation.md')
       .subscribe((post) => {
-        const {attributes, body} = matter(post) as Matter_t
+        const { attributes, body } = matter(post) as Matter_t
         this.post.set({
           title: attributes.title,
           authors: attributes.authors,

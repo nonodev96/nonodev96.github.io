@@ -1,13 +1,13 @@
-import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {ButtonModule} from "primeng/button";
-import {MenuComponent} from "@app/components/menu/menu.component";
-import {SidebarModule} from "primeng/sidebar";
-import {NavigationError, Router, RouterLink} from "@angular/router";
-import {MessageService} from "primeng/api";
-import {MessagesModule} from "primeng/messages";
-import {ConfigService} from "@app/services/config/config.service";
-import {filter, tap} from "rxjs";
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
+import { MenuComponent } from '@app/components/menu/menu.component';
+import { SidebarModule } from 'primeng/sidebar';
+import { NavigationError, Router, RouterLink } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { MessagesModule } from 'primeng/messages';
+import { ConfigService } from '@app/services/config/config.service';
+import { filter, tap } from 'rxjs';
 
 @Component({
   selector: 'nn-config',
@@ -25,16 +25,16 @@ export class ConfigComponent {
 
     this.router.events.pipe(
       filter(event => event instanceof NavigationError),
-      tap(event => {
-        console.log("error")
+      tap(_event => {
+        console.log('error', { _event })
       })
     );
   }
 
-  goTo(link: any | string | string[]) {
-    this.router.navigate(link)
-      .then((isSuccess)=>{
-        console.log("then", isSuccess)
+  goTo(link: string | string[]) {
+    this.router.navigate(link as any)
+      .then((isSuccess) => {
+        console.log('then', isSuccess)
         this.configService.sidebarConfigVisible = false
       })
       .catch(() => {

@@ -1,9 +1,9 @@
-import {Component, Input} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {KatexOptions, MarkdownComponent} from "ngx-markdown";
-import {ButtonModule} from "primeng/button";
-import {ChipModule} from "primeng/chip";
-import {PostAuthors_t, PostChips_t} from "@app/types";
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { KatexOptions, MarkdownComponent } from 'ngx-markdown';
+import { ButtonModule } from 'primeng/button';
+import { ChipModule } from 'primeng/chip';
+import { PostAuthors_t, PostChips_t } from '@app/types';
 
 @Component({
   selector: 'nn-card',
@@ -25,8 +25,8 @@ export class CardComponent {
 
   @Input({ required: true })
   chips: PostChips_t = [
-    {id: 0, label: '2023-12-04', icon: 'pi pi-calendar'},
-    {id: 1, label: '15 min', icon: 'pi pi-clock'},
+    { id: 0, label: '2023-12-04', icon: 'pi pi-calendar' },
+    { id: 1, label: '15 min', icon: 'pi pi-clock' },
   ]
 
   @Input({ required: true })
@@ -48,7 +48,7 @@ export class CardComponent {
 
 
   @Input({ required: true })
-  content: string = "";
+  content: string = '';
 
   content2: string = `
 # Título 1

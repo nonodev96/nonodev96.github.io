@@ -18,6 +18,8 @@ export class BlogService {
   }
 
   getPost(name: string): Observable<string> {
-    return this.http.get(this.apiUrl_Post + name, { responseType: 'text' });
+    return this.http.get(this.apiUrl_Post + name, {
+      responseType: 'text'
+    });
   }
 }

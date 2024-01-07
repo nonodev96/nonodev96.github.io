@@ -4,11 +4,13 @@ import { KatexOptions, MarkdownComponent } from 'ngx-markdown';
 import { ButtonModule } from 'primeng/button';
 import { ChipModule } from 'primeng/chip';
 import { PostAuthors_t, PostChips_t } from '@app/types';
+import { AvatarGroupModule } from 'primeng/avatargroup';
+import { AvatarModule } from 'primeng/avatar';
 
 @Component({
   selector: 'nn-card',
   standalone: true,
-  imports: [CommonModule, MarkdownComponent, ButtonModule, ChipModule],
+  imports: [CommonModule, MarkdownComponent, ButtonModule, ChipModule, AvatarGroupModule, AvatarModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })

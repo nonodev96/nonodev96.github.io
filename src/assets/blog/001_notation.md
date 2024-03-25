@@ -1,4 +1,5 @@
 ﻿---
+filename: "001_notation.md"
 layout: "post"
 title: "Notación matemática modelos adversarios"
 cover: "/assets/development/cover.png"
@@ -9,21 +10,29 @@ chips:
   - label: "20 min"
     icon: "pi pi-clock"
 authors:
-  - id: 0 
+  - id: 0
     name: "nonodev96"
     image: "/assets/development/avatar.png"
-summary: "Notación matemática modelos adversarios"
-# https://katex.org/docs/supported.html
-# https://jfcere.github.io/ngx-markdown/plugins#katex
+categories:
+  - AI
+keywords:
+  - machine learning
+  - deep learning
+  - artificial neural networks
+  - generative adversarial networks
+  - ml
+  - dl
+  - ann
+  - gan
+summary: "Notación matemática de modelos adversariales, machine learning, deep learning"
 ---
 
 # Notación matemática modelos adversarios
 
-
 - Se define Vector como
 
 \begin{equation}
-V = [v_{i,j}]_{i=1,...,n, j=1,...,m} 
+V = [v_{i,j}]\_{i=1,...,n, j=1,...,m}
 \end{equation}
 
 - $ R $ is el conjunto de los números reales
@@ -31,11 +40,9 @@ V = [v_{i,j}]_{i=1,...,n, j=1,...,m}
 - $ Z^{+} $ is el conjunto de los números enteros positivos (números naturales)
 - $ N $ es la dimensión del ejemplo en el espacio de entrada de una red neuronal feed fordward, este es el espacio $ N $-Dimensional, Real-Valued Column Vector $ R^{N} $
 - $ \underline{Z}'$ es la traspuesta por columnas del vector $\underline{z}$, esto es, $\underline{z}'$ es un vector fila
-- $ \lt\underline{z},\underline{y}\gt = \underline{z}' \underline{y} = \sum_{j=1}^{N}{z_{i}y_{j}} $ es el producto vectorial $ \underline{z}, \underline{y} \in R^{N} $
+- $ \lt\underline{z},\underline{y}\gt = \underline{z}' \underline{y} = \sum*{j=1}^{N}{z*{i}y\_{j}} $ es el producto vectorial $ \underline{z}, \underline{y} \in R^{N} $
 - $ T = \lvert X \rvert < \infty $ es el número de ejemplos en el conjunto de datos $X$
 - $ K $ es el número finito de clases en $ X $ para el problema de clasificación.
-
-
 
 AC - GAN Función Objetivo
 
@@ -54,3 +61,7 @@ $$
 $$
 G -> max{Lc - Ls}
 $$
+
+```js
+console.log("TODO");
+```

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MenuItem } from 'primeng/api';
 import { BreadcrumbItemClickEvent, BreadcrumbModule } from 'primeng/breadcrumb';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { filter, map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'nn-breadcrumb',
@@ -13,44 +13,37 @@ import { filter } from 'rxjs';
   styleUrl: './breadcrumb.component.scss'
 })
 export class BreadcrumbComponent implements OnInit {
-  home: MenuItem | undefined;
-  items: MenuItem[] | undefined;
+  static readonly ROUTE_DATA_BREADCRUMB = 'breadcrumb';
+
+  home: MenuItem = { icon: 'pi pi-home', routerLink: '/' };
+  items: MenuItem[] = [];
 
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
   }
-
-  breadcrumbs: { label: string }[] = []
 
   ngOnInit() {
     this.router
       .events
-      .pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
-      let currentRoute: ActivatedRoute | null = this.route.root
-      const url = '';
-      do {
-        const childrenRoutes: ActivatedRoute[] = currentRoute.children;
-        currentRoute = null;
-        for (const route of childrenRoutes) {
-          const routeSnapshot = route.snapshot;
-          url.concat(`/${routeSnapshot.url.map((segment) => segment.path).join('/')}`)
-          this.breadcrumbs.push({
-            label: '',
-          });
-          currentRoute = route;
-        }
-      } while (currentRoute);
-    });
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.items = this.createBreadcrumbs(this.activatedRoute.root)
+        console.log('items', this.items);
+      });
+  }
 
-    this.items = [
-      { label: 'Computer', info: 'ok' },
-      { label: 'Notebook' },
-      { label: 'Accessories' },
-      { label: 'Backpacks' },
-      { label: 'Item' }
-    ];
-
-    this.home = { icon: 'pi pi-home', routerLink: '/' };
+  private createBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: MenuItem[] = []): MenuItem[] {
+    const childrens: ActivatedRoute[] = route.children;
+    for (const children of childrens) {
+      const routeURL: string = children.snapshot.url.map(segment => segment.path).join('/');
+      const label: string = children.snapshot.data[BreadcrumbComponent.ROUTE_DATA_BREADCRUMB]
+      if (routeURL !== '') {
+        url += `/${routeURL}`;
+      }
+      breadcrumbs.push({ label, url, routerLink: url });
+      return this.createBreadcrumbs(children, url, breadcrumbs);
+    }
+    return breadcrumbs
   }
 
   onItemClick($event: BreadcrumbItemClickEvent) {

@@ -3,7 +3,7 @@ export type Language_t = 'es-ES' | 'en-GB'
 export type FileBlog_t = {
   id: number;
   name: string;
-  path: string;
+  filename: string;
 }
 
 export type InfoBlog_t = {
@@ -12,10 +12,13 @@ export type InfoBlog_t = {
 
 export type Matter_t = {
   attributes: {
+    filename: string;
     title: string;
     cover: string;
     chips: PostChips_t;
     authors: PostAuthors_t;
+    keywords: string[];
+    categories: string[];
     summary: string,
   };
   body: string;
@@ -38,10 +41,14 @@ export type PostAuthors_t = PostAuthor_t[]
 
 
 export type Post_t = {
+  filename: string;
   title: string;
   cover: string;
   chips: PostChips_t;
   authors: PostAuthors_t;
-  summary: string,
+  summary: string;
+  keywords: string[];
+  categories: string[];
+
   content: string;
 }

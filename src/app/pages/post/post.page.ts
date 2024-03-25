@@ -4,24 +4,27 @@ import { CommonModule } from '@angular/common';
 import { MarkdownComponent } from 'ngx-markdown';
 
 import matter from 'front-matter';
-import { CardComponent } from '@app/components/card/card.component';
+import { PostComponent } from '@app/components/post/post.component';
 import { BlogService } from '@app/services/blog/blog.service';
 import { Matter_t, Post_t } from '@app/types';
 import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'nn-post',
+  selector: 'nn-posts-page',
   standalone: true,
-  imports: [CommonModule, MarkdownComponent, CardComponent],
-  templateUrl: './post.component.html',
-  styleUrl: './post.component.scss'
+  imports: [CommonModule, MarkdownComponent, PostComponent],
+  templateUrl: './post.page.html',
+  styleUrl: './post.page.scss'
 })
-export class PostComponent implements OnInit {
+export class PostPage implements OnInit {
 
   post = signal<Post_t>({
+    filename: '',
     title: '',
     cover: '',
     chips: [],
+    keywords: [],
+    categories: [],
     authors: [],
     summary: '',
     content: ''
@@ -43,9 +46,12 @@ export class PostComponent implements OnInit {
         .then((post) => {
           const { attributes, body } = matter(post) as Matter_t
           this.post.set({
+            filename: attributes.filename,
             title: attributes.title,
             authors: attributes.authors,
             cover: attributes.cover,
+            categories: attributes.categories,
+            keywords: attributes.keywords,
             chips: attributes.chips,
             summary: attributes.summary,
             content: body
@@ -53,13 +59,11 @@ export class PostComponent implements OnInit {
         })
         .catch(error => {
           console.log(error)
-          if (error.status === 404) {
-            this.messageService.add({
-              severity: 'error',
-              summary: 'Page not found',
-              detail: `Error, page ${postId} not found`
-            });
-          }
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Page not found',
+            detail: `Error, page ${postId} not found`
+          });
           this.default()
         });
     });
@@ -68,14 +72,17 @@ export class PostComponent implements OnInit {
 
   private default() {
     this.blogService
-      .getPostByFilename('template.md')
+      .getPostByFilename('000_template.md')
       .then((post) => {
         const { attributes, body } = matter(post) as Matter_t
         this.post.set({
+          filename: attributes.filename,
           title: attributes.title,
           authors: attributes.authors,
           cover: attributes.cover,
           chips: attributes.chips,
+          keywords: attributes.keywords,
+          categories: attributes.categories,
           summary: attributes.summary,
           content: body
         })

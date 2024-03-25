@@ -1,0 +1,27 @@
+.article-menu {
+
+    &__item:hover {
+        background-color: purple;
+        color: purple;
+        transform: scale(0.75);
+    }
+
+    &__item {
+        background-color: green;
+        color: green;
+
+        &__title {
+            text-wrap: balance;
+            line-height: 1em;
+            max-height: 2em;
+            overflow: hidden;
+        }
+
+        &__summary {
+            text-wrap: pretty;
+            line-height: 1em;
+            max-height: 3em;
+        }
+    }
+
+}

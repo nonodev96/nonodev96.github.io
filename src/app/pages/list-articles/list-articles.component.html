@@ -1,7 +1,0 @@
-<ul>
-  @for (file of filesList_signal();track file.id) {
-    <li>ID: {{ file.id }}, Title: <a [routerLink]="['/article/post/'+file.name]">{{ file.name }}</a></li>
-  } @empty {
-    <li>Loading...</li>
-  }
-</ul>

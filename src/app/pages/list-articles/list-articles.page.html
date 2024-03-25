@@ -1,0 +1,37 @@
+<h3>Lista</h3>
+<ul>
+  @for (file of listArticles_signal();track file.id) {
+  <li>ID: {{ file.id }}, Title: <a [routerLink]="['/article/'+file.name]">{{ file.name }}</a></li>
+  } @empty {
+  <li>Loading...</li>
+  }
+</ul>
+<div class="article-menu">
+  <h2>Lista articulos</h2>
+
+  <div class="article-menu__items">
+    <div class="row row-cols-xs-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3">
+      @for (post of listArticlesMatter_signal();track post.title) {
+      <div class="col">
+        <p-card class="article-menu__item">
+
+          <ng-template pTemplate="header">
+            <a [routerLink]="['/article/'+post.filename]"><img [src]="post.cover" alt="Cover" /></a>
+          </ng-template>
+
+          <ng-template pTemplate="title">
+            <h3 class="article-menu__item__title">{{post.title}}</h3>
+          </ng-template>
+
+          <ng-template pTemplate="content">
+            <p class="article-menu__item__summary">
+              {{post.summary}}
+            </p>
+          </ng-template>
+
+        </p-card>
+      </div>
+      }
+    </div>
+  </div>
+</div>

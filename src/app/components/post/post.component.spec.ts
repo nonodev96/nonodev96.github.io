@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { ChipModule } from 'primeng/chip';
 import { MarkdownComponent, MarkdownModule } from 'ngx-markdown';
-import { CardComponent } from './card.component';
+import { CardComponent } from './post.component';
 
 describe('CardComponent', () => {
   let component: CardComponent;

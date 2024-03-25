@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { InfoBlog_t, FileBlog_t } from '@app/types';
+import matter from 'front-matter';
+
+import { InfoBlog_t, FileBlog_t, Post_t, Matter_t } from '@app/types';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +26,7 @@ export class BlogService {
   async getPostById(id: number): Promise<string> {
     const listPosts: InfoBlog_t = await this.getListPosts();
     const itemPost: FileBlog_t = listPosts.data.filter(item => item.id === id)[0]
-    return this.getPostByFilename(itemPost.path)
+    return this.getPostByFilename(itemPost.filename)
   }
 
   async getPostByFilename(filename: string): Promise<string> {
@@ -32,6 +34,25 @@ export class BlogService {
       .then(response => response.text())
       .then((data: string) => {
         return data
+      })
+  }
+
+  async getPostMatterByFilename(filename: string): Promise<Post_t> {
+    return fetch(this.apiUrl_Post + filename)
+      .then(response => response.text())
+      .then((post: string) => {
+        const { attributes, body } = matter(post) as Matter_t
+        return {
+          filename: attributes.filename,
+          title: attributes.title,
+          authors: attributes.authors,
+          cover: attributes.cover,
+          chips: attributes.chips,
+          categories: attributes.categories,
+          keywords: attributes.keywords,
+          summary: attributes.summary,
+          content: body
+        }
       })
   }
 }

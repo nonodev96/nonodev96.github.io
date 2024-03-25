@@ -2,23 +2,43 @@
   "data": [
     {
       "id": 0,
-      "name": "template.md",
-      "path": "template.md"
+      "name": "000 Template",
+      "filename": "000_template.md"
     },
     {
       "id": 1,
       "name": "001 Notation",
-      "path": "001_notation.md"
+      "filename": "001_notation.md"
     },
     {
       "id": 2,
       "name": "002 Descripción",
-      "path": "002_descripción.md"
+      "filename": "002_descripción.md"
     },
     {
       "id": 3,
       "name": "003 Promises",
-      "path": "003_promises-js.md"
+      "filename": "003_promises-js.md"
+    },
+    {
+      "id": 4,
+      "name": "000 Template",
+      "filename": "000_template.md"
+    },
+    {
+      "id": 5,
+      "name": "001 Notation",
+      "filename": "001_notation.md"
+    },
+    {
+      "id": 6,
+      "name": "002 Descripción",
+      "filename": "002_descripción.md"
+    },
+    {
+      "id": 7,
+      "name": "003 Promises",
+      "filename": "003_promises-js.md"
     }
   ]
 }

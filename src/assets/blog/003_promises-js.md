@@ -1,4 +1,5 @@
 ﻿---
+filename: "003_promises.md"
 layout: "post"
 title: "Promise in JS"
 cover: "/assets/development/cover.png"
@@ -10,6 +11,12 @@ chips:
 authors:
   - name: "nonodev96"
     image: "/assets/development/avatar.png"
+categories:
+  - JavaScript, js
+  - Promises
+keywords:
+  - JavaScript, js
+  - Promises
 summary: "Text summary"
 ---
 
@@ -19,15 +26,16 @@ summary: "Text summary"
 
 ### Título 3
 
-
-Texto normal con *énfasis* y **negrita**.
+Texto normal con _énfasis_ y **negrita**.
 
 Lista no ordenada:
+
 - Elemento 1
 - Elemento 2
 - Elemento 3
 
 Lista ordenada:
+
 1. Primer elemento
 2. Segundo elemento
 3. Tercer elemento
@@ -46,24 +54,26 @@ Reference-style:
 [logo]: /favicon.ico "Logo Title Text 2"
 
 Bloque de código:
+
 ```python
 print("Hola, mundo!")
 
 ```
 
 Citas:
+
 > Esto es una cita.
 
-Línea horizontal:
----
+## Línea horizontal:
 
 Tablas:
 | Encabezado 1 | Encabezado 2 |
 | ------------ | ------------ |
-| Celda 1,1    | Celda 1,2    |
-| Celda 2,1    | Celda 2,2    |
+| Celda 1,1 | Celda 1,2 |
+| Celda 2,1 | Celda 2,2 |
 
 Checkbox:
+
 - [x] Tarea completada
 - [ ] Tarea pendiente
 
@@ -72,6 +82,7 @@ Emoji:
 Esto es un emoji :heart:
 
 Latex:
+
 ```latex
 f(x) = \int_{-\infty}^\infty \hat f(\xi) e^{2 \pi i \xi x} d\xi
 ```
@@ -79,6 +90,7 @@ f(x) = \int_{-\infty}^\infty \hat f(\xi) e^{2 \pi i \xi x} d\xi
 $f(x) = \int_{-\infty}^\infty \hat f(\xi) e^{2 \pi i \xi x} d\xi$
 
 Mermaid:
+
 ```mermaid
 graph TD;
   A-->B;
@@ -104,7 +116,6 @@ quadrantChart
     Campaign F: [0.35, 0.78]
 ```
 
-
 ```mermaid
 mindmap
   root((mindmap))
@@ -124,4 +135,3 @@ mindmap
       Pen and paper
       Mermaid
 ```
-

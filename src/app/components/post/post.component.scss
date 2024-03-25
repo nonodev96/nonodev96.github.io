@@ -1,3 +1,15 @@
+.card {
+  background: var(--surface-card);
+  border-radius: 6px;
+  padding: 1rem;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+
+  .temporal {
+    font-size: 0.5em;
+  }
+}
+
 .markdown-clipboard-button {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.07);

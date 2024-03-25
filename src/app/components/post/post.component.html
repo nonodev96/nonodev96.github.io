@@ -1,12 +1,16 @@
 <div class="card">
   <div class="d-flex justify-content-between flex-column-reverse flex-md-row align-items-center">
     <div>
-      <h3 class="text-justify">{{ title }}</h3>
-      <div class="d-flex flex-wrap justify-content-center justify-content-md-start gap-3">
+      <h3>{{ title }}</h3>
+      <div>
         @for (chip of chips;track chip.id) {
-        <p-chip [label]="chip.label" [icon]="chip.icon"></p-chip>
+        <p-chip [label]="chip.label" [icon]="chip.icon" class="pr-3"></p-chip>
         } @empty {
         <p-chip [label]="date" icon="pi pi-calendar"></p-chip>
+        }
+
+        @for (item of categories; track item) {
+        <p-tag [value]="item" [rounded]="true" class="pr-3"></p-tag>
         }
       </div>
     </div>
@@ -25,7 +29,13 @@
   </div>
   <div class=" mb-4 font-semibold">{{ summary }}</div>
   <hr>
-  <markdown clipboard emoji mermaid katex [katexOptions]="katexOptions" [data]="content"></markdown>
+
+  <ng-template #buttonTemplate>
+    <button (click)="onCopyToClipboard()" class="markdown-clipboard-button" title="copy to clipboard">
+      <i class="pi pi-copy"></i>
+    </button>
+  </ng-template>
+  <markdown clipboard emoji mermaid katex [clipboardButtonTemplate]="buttonTemplate" [katexOptions]="katexOptions" [data]="content"></markdown>
   <hr class="mt-4 mb-4">
   <div class="flex flex-column sm:flex-row my-8 w-full gap-3">
     <p-button pRipple icon="pi pi-twitter" label="Twitter"></p-button>

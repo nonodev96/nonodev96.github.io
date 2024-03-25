@@ -3,7 +3,7 @@
     <a class="p-menuitem-link flex justify-content-between align-items-center p-3">
       <div>
         <span [class]="item.icon"></span>
-        <span class="ml-2">{{item.label}}</span>
+        <span class="ml-3" [ngClass]="item.styleClass">{{item.label}}</span>
       </div>
       <div>
         <span *ngIf="item.shortcut" [class]="item.shortcutClass">{{ item.shortcut }}</span>

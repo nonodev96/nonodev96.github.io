@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuComponent } from "@app/components/menu/menu.component";
-import { SidebarModule } from "primeng/sidebar";
-import { ButtonModule } from "primeng/button";
+import { MenuComponent } from '@app/components/menu/menu.component';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'nn-sidebar',

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-clipboard-button',
+  selector: 'nn-clipboard-button',
   templateUrl: './clipboard-button.component.html',
   styleUrl: './clipboard-button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -11,9 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ClipboardButtonComponent {
 
-  constructor() { }
-
   onCopyToClipboard() {
-    console.log("copy");
+    console.log('copy');
   }
 }

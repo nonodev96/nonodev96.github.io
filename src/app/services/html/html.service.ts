@@ -14,7 +14,7 @@ export class HtmlService {
     this.titleService.setTitle(newTitle);
   }
 
-  updateMeta(tag = {name: 'description', content: 'Descripción de la página'}) {
-    this.metaService.addTag({name: tag.name, content: tag.content});
+  updateMeta(tag = { name: 'description', content: 'Descripción de la página' }) {
+    this.metaService.addTag({ name: tag.name, content: tag.content });
   }
 }

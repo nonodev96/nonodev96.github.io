@@ -2,13 +2,15 @@
 layout: "post"
 title: "Markdown Style Guide"
 cover: "/assets/development/test.png"
+slug: "url-slug"
 chips:
   - label: "2023-12-17"
     icon: "pi pi-calendar"
   - label: "20 min"
     icon: "pi pi-clock"
 authors:
-  - name: "nonodev96"
+  - id: 0
+    name: "nonodev96"
     image: "/assets/development/avatar.png"
 summary: "Text summary"
 ---

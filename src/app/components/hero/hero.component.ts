@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from "@ngx-translate/core";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-hero',
+  selector: 'nn-hero',
   standalone: true,
   imports: [CommonModule, TranslateModule],
   templateUrl: './hero.component.html',

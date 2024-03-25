@@ -1,5 +1,5 @@
-import {MarkedOptions, MarkedRenderer} from 'ngx-markdown';
-import {AnchorService} from '@shared/anchor';
+import { MarkedOptions, MarkedRenderer } from 'ngx-markdown';
+import { AnchorService } from '@shared/anchor';
 
 export function markedOptionsFactory(anchorService: AnchorService): MarkedOptions {
   const renderer = new MarkedRenderer();
@@ -10,7 +10,7 @@ export function markedOptionsFactory(anchorService: AnchorService): MarkedOption
   };
 
   renderer.blockquote = (text: string) => {
-    return '<blockquote class="blockquote"><p>' + text + '</p></blockquote>';
+    return `<blockquote class="blockquote"><p>${text}</p></blockquote>`;
   }
 
   // renderer.table = (header, body)=>{

@@ -2,8 +2,18 @@
   "data": [
     {
       "id": 0,
-      "name": "test.md",
-      "path": "/assets/blog/test.md"
+      "name": "template.md",
+      "path": "/assets/blog/template.md"
+    },
+    {
+      "id": 1,
+      "name": "001_notation.md",
+      "path": "/assets/blog/001_notation.md"
+    },
+    {
+      "id": 2,
+      "name": "002_descripción.md",
+      "path": "/assets/blog/002_descripción.md"
     }
   ]
 }

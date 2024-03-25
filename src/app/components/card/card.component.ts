@@ -1,14 +1,16 @@
-import {Component, Input} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {MarkdownComponent} from "ngx-markdown";
-import {ButtonModule} from "primeng/button";
-import {ChipModule} from "primeng/chip";
-import {PostAuthors_t, PostChips_t} from "@app/types";
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { KatexOptions, MarkdownComponent } from 'ngx-markdown';
+import { ButtonModule } from 'primeng/button';
+import { ChipModule } from 'primeng/chip';
+import { PostAuthors_t, PostChips_t } from '@app/types';
+import { AvatarGroupModule } from 'primeng/avatargroup';
+import { AvatarModule } from 'primeng/avatar';
 
 @Component({
   selector: 'nn-card',
   standalone: true,
-  imports: [CommonModule, MarkdownComponent, ButtonModule, ChipModule],
+  imports: [CommonModule, MarkdownComponent, ButtonModule, ChipModule, AvatarGroupModule, AvatarModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })
@@ -25,22 +27,30 @@ export class CardComponent {
 
   @Input({ required: true })
   chips: PostChips_t = [
-    {id: 0, label: '2023-12-04', icon: 'pi pi-calendar'},
-    {id: 1, label: '15 min', icon: 'pi pi-clock'},
+    { id: 0, label: '2023-12-04', icon: 'pi pi-calendar' },
+    { id: 1, label: '15 min', icon: 'pi pi-clock' },
   ]
 
   @Input({ required: true })
   authors: PostAuthors_t = [{
     id: 0,
     name: 'nonodev96',
-    image: 'assets/development/avatar.png'
+    image: '/assets/development/avatar.png'
   }]
 
   @Input({ required: true })
   summary: string = 'Sodales massa, morbi convallis'
 
+  @Input({ required: false })
+  katexOptions: KatexOptions = {
+    displayMode: true,
+    strict: 'warn'
+
+  };
+
+
   @Input({ required: true })
-  content: string = "";
+  content: string = '';
 
   content2: string = `
 # Título 1

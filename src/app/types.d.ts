@@ -1,5 +1,11 @@
 export type Language_t = 'es-ES' | 'en-GB'
 
+export type FileBlog_t = {
+  id: number;
+  name: string;
+  path: string;
+}
+
 export type InfoBlog_t = {
   data: FileBlog_t[]
 }
@@ -13,12 +19,6 @@ export type Matter_t = {
     summary: string,
   };
   body: string;
-}
-
-export type FileBlog_t = {
-  id: string;
-  name: string;
-  path: string;
 }
 
 export type PostChip_t = {

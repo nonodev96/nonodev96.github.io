@@ -1,7 +1,7 @@
 ﻿---
 layout: "post"
 title: "Notación matemática modelos adversarios"
-cover: "/assets/development/test.png"
+cover: "/assets/development/cover.png"
 slug: "notación-matemática-modelos-adversarios"
 chips:
   - label: "2023-12-17"

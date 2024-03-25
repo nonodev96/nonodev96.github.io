@@ -30,60 +30,55 @@ export class PostComponent implements OnInit {
   // urlTree: UrlTree = new UrlTree();
 
   constructor(public blogService: BlogService,
-              public messageService: MessageService,
-              private activatedRoute: ActivatedRoute,
-              // private router: Router,
-  ) {
-    // this.urlTree = this.router.parseUrl(this.router.url);
-
-  }
+    public messageService: MessageService,
+    private activatedRoute: ActivatedRoute,
+  ) { }
 
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
-      const postId = params.get('id') as string
-
-      console.log(postId)
+      const postId: number = parseInt(params.get('id')!)
       this.blogService
-        .getPost(postId)
-        .subscribe({
-          next: (post) => {
-            const { attributes, body } = matter(post) as Matter_t
-            this.post.set({
-              title: attributes.title,
-              authors: attributes.authors,
-              cover: attributes.cover,
-              chips: attributes.chips,
-              summary: attributes.summary,
-              content: body
-            })
-          },
-          error: (error) => {
-            console.log(error)
-            if (error.status === 404) {
-              this.messageService.add({
-                severity: 'error',
-                summary: 'Page not found',
-                detail: `Error, page ${postId} not found`
-              });            }
-            this.default()
-          }
+        .getPostById(postId)
+        .then((post) => {
+          const { attributes, body } = matter(post) as Matter_t
+          this.post.set({
+            title: attributes.title,
+            authors: attributes.authors,
+            cover: attributes.cover,
+            chips: attributes.chips,
+            summary: attributes.summary,
+            content: body
+          })
         })
+        .catch(error => {
+          console.log(error)
+          if (error.status === 404) {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Page not found',
+              detail: `Error, page ${postId} not found`
+            });
+          }
+          this.default()
+        });
     });
   }
 
 
   private default() {
-    this.blogService.getPost('template.md').subscribe(post => {
-      const { attributes, body } = matter(post) as Matter_t
-      this.post.set({
-        title: attributes.title,
-        authors: attributes.authors,
-        cover: attributes.cover,
-        chips: attributes.chips,
-        summary: attributes.summary,
-        content: body
+    this.blogService
+      .getPostByFilename('template.md')
+      .then((post) => {
+        const { attributes, body } = matter(post) as Matter_t
+        this.post.set({
+          title: attributes.title,
+          authors: attributes.authors,
+          cover: attributes.cover,
+          chips: attributes.chips,
+          summary: attributes.summary,
+          content: body
+        })
       })
-    })
   }
 }

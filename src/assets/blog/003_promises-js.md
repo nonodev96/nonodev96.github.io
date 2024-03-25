@@ -1,7 +1,7 @@
 ﻿---
 layout: "post"
 title: "Promise in JS"
-cover: "/assets/development/test.png"
+cover: "/assets/development/cover.png"
 chips:
   - label: "2023-12-17"
     icon: "pi pi-calendar"

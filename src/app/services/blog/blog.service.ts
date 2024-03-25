@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { InfoBlog_t } from '@app/types';
+
+import { InfoBlog_t, FileBlog_t } from '@app/types';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +13,25 @@ export class BlogService {
   constructor(private http: HttpClient) {
   }
 
-  getListPosts(): Observable<InfoBlog_t> {
-    return this.http.get<InfoBlog_t>(this.apiUrl_ListArticles);
+  async getListPosts(): Promise<InfoBlog_t> {
+    return fetch(this.apiUrl_ListArticles)
+      .then(response => response.json())
+      .then((response: InfoBlog_t) => {
+        return response;
+      })
   }
 
-  getPost(name: string): Observable<string> {
-    return this.http.get(this.apiUrl_Post + name, {
-      responseType: 'text'
-    });
+  async getPostById(id: number): Promise<string> {
+    const listPosts: InfoBlog_t = await this.getListPosts();
+    const itemPost: FileBlog_t = listPosts.data.filter(item => item.id === id)[0]
+    return this.getPostByFilename(itemPost.path)
+  }
+
+  async getPostByFilename(filename: string): Promise<string> {
+    return fetch(this.apiUrl_Post + filename)
+      .then(response => response.text())
+      .then((data: string) => {
+        return data
+      })
   }
 }

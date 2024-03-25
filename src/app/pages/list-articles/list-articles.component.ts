@@ -20,7 +20,7 @@ export class ListArticlesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.blogService.getListPosts().subscribe((info_blog) => {
+    this.blogService.getListPosts().then((info_blog) => {
       this.filesList_signal.set(info_blog.data)
     });
   }

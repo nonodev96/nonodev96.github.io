@@ -3,17 +3,22 @@
     {
       "id": 0,
       "name": "template.md",
-      "path": "/assets/blog/template.md"
+      "path": "template.md"
     },
     {
       "id": 1,
-      "name": "001_notation.md",
-      "path": "/assets/blog/001_notation.md"
+      "name": "001 Notation",
+      "path": "001_notation.md"
     },
     {
       "id": 2,
-      "name": "002_descripción.md",
-      "path": "/assets/blog/002_descripción.md"
+      "name": "002 Descripción",
+      "path": "002_descripción.md"
+    },
+    {
+      "id": 3,
+      "name": "003 Promises",
+      "path": "003_promises-js.md"
     }
   ]
 }

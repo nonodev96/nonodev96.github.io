@@ -1,7 +1,7 @@
 ﻿---
 layout: "post"
 title: "Descripción general del aprendizaje adversario"
-cover: "/assets/development/test.png"
+cover: "/assets/development/cover.png"
 slug: "descripción-general-del-aprendizaje-adversario"
 chips:
   - label: "2023-12-17"

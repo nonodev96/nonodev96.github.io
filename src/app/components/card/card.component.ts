@@ -6,11 +6,12 @@ import { ChipModule } from 'primeng/chip';
 import { PostAuthors_t, PostChips_t } from '@app/types';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { AvatarModule } from 'primeng/avatar';
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
   selector: 'nn-card',
   standalone: true,
-  imports: [CommonModule, MarkdownComponent, ButtonModule, ChipModule, AvatarGroupModule, AvatarModule],
+  imports: [CommonModule, MarkdownComponent, ButtonModule, ChipModule, AvatarGroupModule, AvatarModule, TooltipModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })
@@ -23,7 +24,7 @@ export class CardComponent {
   title: string = 'How To Get Started Tutorial'
 
   @Input({ required: true })
-  cover: string = 'assets/development/test.png'
+  cover: string = 'assets/development/cover.png'
 
   @Input({ required: true })
   chips: PostChips_t = [

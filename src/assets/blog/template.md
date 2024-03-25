@@ -1,7 +1,7 @@
 ﻿---
 layout: "post"
 title: "Markdown Style Guide"
-cover: "/assets/development/test.png"
+cover: "/assets/development/cover.png"
 slug: "url-slug"
 chips:
   - label: "2023-12-17"

@@ -1,4 +1,5 @@
 ﻿---
+postId: 001
 filename: "001_notation.md"
 layout: "post"
 title: "Notación matemática modelos adversarios"
@@ -16,14 +17,10 @@ authors:
 categories:
   - AI
 keywords:
-  - machine learning
-  - deep learning
-  - artificial neural networks
-  - generative adversarial networks
-  - ml
-  - dl
-  - ann
-  - gan
+  - ML
+  - DL
+  - ANN
+  - GAN
 summary: "Notación matemática de modelos adversariales, machine learning, deep learning"
 ---
 

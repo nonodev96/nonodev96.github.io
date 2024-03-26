@@ -19,8 +19,8 @@ import { filter, tap } from 'rxjs';
 export class ConfigComponent {
 
   constructor(private router: Router,
-              private messageService: MessageService,
-              public configService: ConfigService) {
+    private messageService: MessageService,
+    public configService: ConfigService) {
 
 
     this.router.events.pipe(
@@ -33,8 +33,7 @@ export class ConfigComponent {
 
   goTo(link: string | string[]) {
     this.router.navigate(link as any)
-      .then((isSuccess) => {
-        console.log('then', isSuccess)
+      .then(() => {
         this.configService.sidebarConfigVisible = false
       })
       .catch(() => {

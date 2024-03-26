@@ -2,17 +2,6 @@
   <div class="d-flex justify-content-between flex-column-reverse flex-md-row align-items-center">
     <div>
       <h3>{{ title }}</h3>
-      <div>
-        @for (chip of chips;track chip.id) {
-        <p-chip [label]="chip.label" [icon]="chip.icon" class="pr-3"></p-chip>
-        } @empty {
-        <p-chip [label]="date" icon="pi pi-calendar"></p-chip>
-        }
-
-        @for (item of categories; track item) {
-        <p-tag [value]="item" [rounded]="true" class="pr-3"></p-tag>
-        }
-      </div>
     </div>
     <div class="d-flex flex-column align-items-center justify-content-center">
       @if (authors.length >0) {
@@ -24,20 +13,40 @@
       }
     </div>
   </div>
-  <div class="mb-3 my-3">
-    <img [src]="cover" alt="Cover" class="w-100">
+  <div class="mb-3">
+    <div class="row position-relative">
+      <div class="col-12">
+        <img [src]="cover" alt="Cover" class="w-100">
+      </div>
+      <div style="position: absolute; top: 1em; left: 2em; ">
+        <p>
+          @for (chip of chips;track chip.id) {
+          <p-chip [label]="chip.label" [icon]="chip.icon" class="pr-3"></p-chip>
+          } @empty {
+          <p-chip [label]="date" icon="pi pi-calendar"></p-chip>
+          }
+        </p>
+        <p>
+          @for (keyword of keywords; track keyword) {
+          <p-tag [value]="keyword" [rounded]="true" class="pr-3">#</p-tag>
+          }
+        </p>
+      </div>
+    </div>
   </div>
-  <div class=" mb-4 font-semibold">{{ summary }}</div>
-  <hr>
 
-  <ng-template #buttonTemplate>
-    <button (click)="onCopyToClipboard()" class="markdown-clipboard-button" title="copy to clipboard">
-      <i class="pi pi-copy"></i>
-    </button>
-  </ng-template>
-  <markdown clipboard emoji mermaid katex [clipboardButtonTemplate]="buttonTemplate" [katexOptions]="katexOptions" [data]="content"></markdown>
-  <hr class="mt-4 mb-4">
-  <div class="flex flex-column sm:flex-row my-8 w-full gap-3">
-    <p-button pRipple icon="pi pi-twitter" label="Twitter"></p-button>
+  <hr class="colored">
+
+  <div class="my-3">
+    <ng-template #buttonTemplate>
+      <button (click)="onCopyToClipboard()" class="markdown-clipboard-button" title="copy to clipboard">
+        <i class="pi pi-copy"></i>
+      </button>
+    </ng-template>
+    <markdown clipboard emoji mermaid katex [clipboardButtonTemplate]="buttonTemplate" [katexOptions]="katexOptions" [data]="content"></markdown>
+    <hr class="mt-4 mb-4">
+    <div class="flex flex-column sm:flex-row my-8 w-full gap-3">
+      <p-button pRipple icon="pi pi-twitter" label="Twitter"></p-button>
+    </div>
   </div>
 </div>

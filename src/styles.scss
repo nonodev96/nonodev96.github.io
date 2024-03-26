@@ -44,10 +44,10 @@ body {
 
 /* You can add global styles to this file, and also import other style files */
 .markdown-clipboard-button {
+  cursor: pointer;
   background-color: rgba(255, 255, 255, 0.07);
   border: none;
   border-radius: 4px;
-  cursor: pointer;
   font-size: 11px;
   padding: 4px 0;
   width: 50px;
@@ -87,10 +87,34 @@ body {
   text-wrap: nowrap;
 }
 
+.t-balance {
+  text-wrap: balance;
+}
+
+.t-pretty {
+  text-wrap: pretty;
+}
+
 .font-bold {
   font-weight: 700;
 }
 
+.fs-075 {
+  font-size: 0.75rem;
+}
+
 .gap-3 {
   gap: 1rem;
+}
+
+
+// Corregir reset con estilos primeng
+ol,
+ul,
+dl {
+  margin-bottom: 0 !important;
+}
+
+button {
+  line-height: normal;
 }

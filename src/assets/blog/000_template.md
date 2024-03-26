@@ -1,4 +1,5 @@
 ﻿---
+postId: 000
 filename: "000_template.md"
 layout: "post"
 title: "Template | Markdown Style Guide"
@@ -14,13 +15,12 @@ authors:
     name: "nonodev96"
     image: "/assets/development/avatar.png"
 categories:
-  - Template
   - Markdown
   - Latex
 keywords:
-  - markdown, md
-  - latex, tex
-summary: "Text summary"
+  - Markdown
+  - Latex
+summary: "Aprende a estructurar documentos utilizando sintaxis sencilla de Markdown para crear títulos, listas, enlaces e imágenes. También se cubriría cómo personalizar el estilo y diseño del documento utilizando extensiones y características avanzadas de Markdown, como tablas y bloques de código."
 ---
 
 # Título 1

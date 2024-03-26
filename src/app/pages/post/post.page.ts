@@ -19,6 +19,7 @@ import { MessageService } from 'primeng/api';
 export class PostPage implements OnInit {
 
   post = signal<Post_t>({
+    postId: 0,
     filename: '',
     title: '',
     cover: '',
@@ -46,6 +47,7 @@ export class PostPage implements OnInit {
         .then((post) => {
           const { attributes, body } = matter(post) as Matter_t
           this.post.set({
+            postId: attributes.postId,
             filename: attributes.filename,
             title: attributes.title,
             authors: attributes.authors,
@@ -76,6 +78,7 @@ export class PostPage implements OnInit {
       .then((post) => {
         const { attributes, body } = matter(post) as Matter_t
         this.post.set({
+          postId: attributes.postId,
           filename: attributes.filename,
           title: attributes.title,
           authors: attributes.authors,

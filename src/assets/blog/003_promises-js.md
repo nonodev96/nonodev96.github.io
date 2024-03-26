@@ -1,7 +1,8 @@
 ﻿---
+postId: 003
 filename: "003_promises.md"
 layout: "post"
-title: "Promise in JS"
+title: "Asincronia y promesas en JavaScript "
 cover: "/assets/development/cover.png"
 chips:
   - label: "2023-12-17"
@@ -12,12 +13,12 @@ authors:
   - name: "nonodev96"
     image: "/assets/development/avatar.png"
 categories:
-  - JavaScript, js
+  - JavaScript
   - Promises
 keywords:
-  - JavaScript, js
+  - JavaScript
   - Promises
-summary: "Text summary"
+summary: "En este tutorial explicaremos el concepto de promesas de JavaScript, se explicaría cómo crear promesas para manejar operaciones asíncronas, cómo encadenarlas usando métodos como .then() y .catch(), así como async, await, y cómo utilizar Promise.all() para manejar múltiples promesas concurrentemente."
 ---
 
 # Título 1

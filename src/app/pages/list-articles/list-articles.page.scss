@@ -1,27 +1,68 @@
 .article-menu {
-
-    &__item:hover {
-        background-color: purple;
-        color: purple;
-        transform: scale(0.75);
+    &__cover {
+        transition: transform 0.25s;
     }
 
     &__item {
-        background-color: green;
-        color: green;
+        transition: transform 0.25s;
 
-        &__title {
-            text-wrap: balance;
-            line-height: 1em;
-            max-height: 2em;
-            overflow: hidden;
+        &:hover {
+            transform: scale(1.05);
         }
 
-        &__summary {
-            text-wrap: pretty;
-            line-height: 1em;
-            max-height: 3em;
+        &:hover .article-menu__cover {
+            transform: scale(1.05);
         }
+
+        background-color: #20262e;
+        margin-bottom: 1.5rem;
+        border-radius: 5px;
     }
 
+    // https://stackoverflow.com/questions/11989546/wrap-a-text-within-only-two-lines-inside-div
+    &__title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-height: 1.75rem;
+        max-height: 3.5em;
+
+        text-wrap: balance;
+    }
+
+    &__summary {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        line-height: 1.5em;
+        max-height: 4.5em;
+
+        text-wrap: pretty;
+    }
+
+    &__content {
+        padding-top: 1.5rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    &__footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+:host {
+    ::ng-deep .fs-075 {
+        font-size: 0.75rem;
+    }
 }

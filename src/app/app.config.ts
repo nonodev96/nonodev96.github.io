@@ -1,9 +1,9 @@
 import { ApplicationConfig, importProvidersFrom, SecurityContext } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
-
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
-import { CLIPBOARD_OPTIONS, MARKED_OPTIONS, provideMarkdown } from 'ngx-markdown';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
+
+import { CLIPBOARD_OPTIONS, MARKED_OPTIONS, provideMarkdown } from 'ngx-markdown';
 import { gfmHeadingId } from 'marked-gfm-heading-id';
 
 import { markedOptionsFactory } from '@app/marked-options-factory';

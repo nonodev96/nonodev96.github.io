@@ -37,12 +37,35 @@ export class BlogService {
       })
   }
 
-  async getPostMatterByFilename(filename: string): Promise<Post_t> {
-    return fetch(this.apiUrl_Post + filename)
-      .then(response => response.text())
+
+  async getPostMatterById(id: number): Promise<Post_t> {
+    const listPosts: InfoBlog_t = await this.getListPosts();
+    const itemPost: FileBlog_t = listPosts.data.filter(item => item.id === parseInt(id.toString()))[0]
+
+    return this.getPostByFilename(itemPost.filename)
       .then((post: string) => {
         const { attributes, body } = matter(post) as Matter_t
         return {
+          postId: attributes.postId,
+          filename: attributes.filename,
+          title: attributes.title,
+          authors: attributes.authors,
+          cover: attributes.cover,
+          chips: attributes.chips,
+          categories: attributes.categories,
+          keywords: attributes.keywords,
+          summary: attributes.summary,
+          content: body
+        }
+      })
+  }
+
+  async getPostMatterByFilename(filename: string): Promise<Post_t> {
+    return this.getPostByFilename(filename)
+      .then((post: string) => {
+        const { attributes, body } = matter(post) as Matter_t
+        return {
+          postId: attributes.postId,
           filename: attributes.filename,
           title: attributes.title,
           authors: attributes.authors,

@@ -12,6 +12,7 @@ export type InfoBlog_t = {
 
 export type Matter_t = {
   attributes: {
+    postId: number;
     filename: string;
     title: string;
     cover: string;
@@ -41,6 +42,7 @@ export type PostAuthors_t = PostAuthor_t[]
 
 
 export type Post_t = {
+  postId: number;
   filename: string;
   title: string;
   cover: string;

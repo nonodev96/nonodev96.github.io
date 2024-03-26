@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Data, Routes } from '@angular/router';
 
 import { TestsComponent } from '@app/debug/tests/tests.component';
 import { LoremComponent } from '@app/components/lorem/lorem.component';
@@ -12,6 +12,7 @@ import { Spline3dTestComponent } from '@app/debug/spline-3d-test/spline-3d-test.
 
 import { ListArticlesPage } from '@app/pages/list-articles/list-articles.page';
 import { PostPage } from '@app/pages/post/post.page';
+import { PostResolverService } from '@app/services/breadcrumb/post-resolver.service';
 
 export const routes: Routes = [
   {
@@ -53,7 +54,12 @@ export const routes: Routes = [
       },
       {
         path: ':id',
-        data: { breadcrumb: 'Post' },
+        data: {
+          breadcrumb: (data: Data) => {
+            return `Post | ${data['post'].title}`
+          }
+        },
+        resolve: { post: PostResolverService }, // resolver to retrieve the object used in the breadcrumb construction
         component: PostPage
       },
     ]

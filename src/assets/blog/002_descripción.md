@@ -1,4 +1,5 @@
 ﻿---
+postId: 002
 filename: "002_descripción.md"
 layout: "post"
 title: "Descripción general del aprendizaje adversario"
@@ -13,16 +14,15 @@ authors:
   - id: 0
     name: "nonodev96"
     image: "/assets/development/avatar.png"
-  - id: 1
-    name: "nonodev96"
-    image: "/assets/development/avatar.png"
 categories:
   - AI
   - GAN
 keywords:
-  - AI
+  - ML
+  - DL
+  - ANN
   - GAN
-summary: "Descripción general del aprendizaje adversarial"
+summary: "Introducción al concepto de aprendizaje adversarial en el campo del machine learning. Cubriremos los principios fundamentales del enfoque, explicando cómo funciona la interacción entre el generador y el discriminador, así como su aplicación en diversas áreas como la generación de instancias sintéticas."
 # https://katex.org/docs/supported.html
 # https://jfcere.github.io/ngx-markdown/plugins#katex
 ---

@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+            <div class="pomodoro">
+                <h1 class="pomodoro__title">Pomodoro Timer {{ counterDisplay() }}</h1>
+                <p class="pomodoro__display">{{ timerDisplay() }}</p>
+
+                <div class="pomodoro__buttons">
+                    <button class="pomodoro__button-start" (click)="startTimer()" [disabled]="timerStatus()">Start</button>
+                    <button class="pomodoro__button-stop" (click)="stopTimer()" [disabled]="!timerStatus()">Stop</button>
+                    <button class="pomodoro__button-reset" (click)="resetTimer()">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+            <div class="tasks">
+                <h2 class="tasks__title">Tasks</h2>
+
+
+            </div>
+        </div>
+    </div>
+</div>

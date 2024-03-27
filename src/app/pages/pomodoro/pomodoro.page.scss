@@ -1,0 +1,68 @@
+@import 'bootstrap';
+
+.pomodoro {
+    text-align: center;
+
+    border: 5px solid #222;
+    border-radius: 5px;
+    background-color: #464444;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    margin-bottom: 1em;
+
+    &__title {
+        font-size: 3em;
+    }
+
+    &__display {
+        font-size: 10em;
+
+        @media (max-width: 768px) {
+            font-size: 7em;
+        }
+
+        @media (max-width: 576px) {
+            font-size: 5em;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: center;
+
+        &>button {
+            margin: 0 1rem;
+        }
+    }
+
+    &__button-start {
+        @extend .btn;
+        @extend .btn-primary;
+    }
+
+    &__button-stop {
+        @extend .btn;
+        @extend .btn-danger;
+    }
+
+    &__button-reset {
+        @extend .btn;
+        @extend .btn-secondary;
+    }
+}
+
+
+.tasks {
+    text-align: center;
+
+    border: 5px solid #222;
+    border-radius: 5px;
+    background-color: #464444;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    margin-bottom: 1em;
+
+    &__title {
+        font-size: 3em;
+    }
+}

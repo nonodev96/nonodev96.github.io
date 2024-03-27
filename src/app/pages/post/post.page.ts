@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MarkdownComponent } from 'ngx-markdown';
@@ -8,6 +8,7 @@ import { PostComponent } from '@app/components/post/post.component';
 import { BlogService } from '@app/services/blog/blog.service';
 import { Matter_t, Post_t } from '@app/types';
 import { MessageService } from 'primeng/api';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'nn-posts-page',
@@ -16,7 +17,7 @@ import { MessageService } from 'primeng/api';
   templateUrl: './post.page.html',
   styleUrl: './post.page.scss'
 })
-export class PostPage implements OnInit {
+export class PostPage implements OnInit, OnDestroy {
 
   post = signal<Post_t>({
     postId: 0,
@@ -36,8 +37,9 @@ export class PostPage implements OnInit {
   constructor(public blogService: BlogService,
     public messageService: MessageService,
     private activatedRoute: ActivatedRoute,
+    private titleService: Title,
+    private metaService: Meta
   ) { }
-
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
@@ -46,6 +48,9 @@ export class PostPage implements OnInit {
         .getPostById(postId)
         .then((post) => {
           const { attributes, body } = matter(post) as Matter_t
+          this.titleService.setTitle(attributes.title);
+          this.metaService.addTag({ name: 'author', content: attributes.authors.map((a) => a.name).join(', ') })
+
           this.post.set({
             postId: attributes.postId,
             filename: attributes.filename,
@@ -59,36 +64,12 @@ export class PostPage implements OnInit {
             content: body
           })
         })
-        .catch(error => {
-          console.log(error)
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Page not found',
-            detail: `Error, page ${postId} not found`
-          });
-          this.default()
-        });
+
     });
   }
 
-
-  private default() {
-    this.blogService
-      .getPostByFilename('000_template.md')
-      .then((post) => {
-        const { attributes, body } = matter(post) as Matter_t
-        this.post.set({
-          postId: attributes.postId,
-          filename: attributes.filename,
-          title: attributes.title,
-          authors: attributes.authors,
-          cover: attributes.cover,
-          chips: attributes.chips,
-          keywords: attributes.keywords,
-          categories: attributes.categories,
-          summary: attributes.summary,
-          content: body
-        })
-      })
+  ngOnDestroy(): void {
+    this.metaService.removeTag('name="author"')
   }
+
 }

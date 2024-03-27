@@ -17,6 +17,7 @@ import { SelectItem } from 'primeng/api';
 import { BlogService } from '@app/services/blog/blog.service';
 import { FileBlog_t, Post_t } from '@app/types';
 import { FormsModule } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'nn-list-articles',
@@ -45,11 +46,14 @@ export class ListArticlesPage implements OnInit {
   allKeywords: WritableSignal<{ name: string }[]> = signal([]);
   selectedKeywords: WritableSignal<{ name: string }[]> = signal([])
 
-
-  constructor(public blogService: BlogService) {
+  constructor(
+    public blogService: BlogService,
+    private titleService: Title
+  ) {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Artículos de programación')
     const allKeywordsMap = new Map<string, { name: string }>()
     this.blogService.getListPosts().then(
       async (info_blog) => {

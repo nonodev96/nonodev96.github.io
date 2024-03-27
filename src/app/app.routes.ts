@@ -12,13 +12,13 @@ import { Spline3dTestComponent } from '@app/debug/spline-3d-test/spline-3d-test.
 
 import { ListArticlesPage } from '@app/pages/list-articles/list-articles.page';
 import { PostPage } from '@app/pages/post/post.page';
+import { PomodoroPage } from '@app/pages/pomodoro/pomodoro.page';
 import { PostResolverService } from '@app/services/breadcrumb/post-resolver.service';
 
 export const routes: Routes = [
   {
     path: '',
     component: LayoutMainComponent,
-    data: { breadcrumb: 'Main' },
     children: [
       {
         path: '',
@@ -26,8 +26,13 @@ export const routes: Routes = [
         component: HomeComponent
       },
       {
+        path: 'pomodoro',
+        data: { breadcrumb: 'Pomodoro' },
+        component: PomodoroPage
+      },
+      {
         path: 'dashboard',
-        data: { breadcrumb: 'dashboard' },
+        data: { breadcrumb: 'Dashboard' },
         component: DashboardComponent
       },
       {

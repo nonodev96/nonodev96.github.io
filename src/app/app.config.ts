@@ -28,7 +28,7 @@ export const appConfig: ApplicationConfig = {
           useFactory: createTranslateLoader,
           deps: [HttpClient],
         },
-      })
+      }),
     ),
     provideAnimations(),
     provideRouter(routes,

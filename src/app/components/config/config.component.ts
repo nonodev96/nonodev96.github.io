@@ -20,9 +20,8 @@ export class ConfigComponent {
 
   constructor(private router: Router,
     private messageService: MessageService,
-    public configService: ConfigService) {
-
-
+    public configService: ConfigService
+  ) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationError),
       tap(_event => {

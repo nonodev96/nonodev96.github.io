@@ -4,25 +4,17 @@
 <p-sidebar [(visible)]="configService.sidebarConfigVisible" position="right">
   <h3>Config</h3>
   <p-button (onClick)="close()">Close</p-button>
-  <br>
-  <br>
-  <p-button (onClick)="goTo(['/home'])">Go to home</p-button>
-  <br>
-  <br>
-  <p-button (onClick)="goTo(['/lorem'])">Go to lorem</p-button>
-  <br>
-  <br>
-  <p-button (onClick)="goTo(['/article/post', '5'])">Go to post 5</p-button>
-  <br>
-  <br>
-
-  <a routerLink="/home"> Link to home page </a><br>
-  <a routerLink="/lorem"> Link to lorem page </a><br>
-  <a routerLink="/debug"> Link to debug </a><br>
+  <ol>
+    <li><a routerLink="/"> Page home </a></li>
+    <li><a routerLink="/lorem"> Page lorem </a></li>
+    <li><a routerLink="/debug"> Page debug </a></li>
+    <li><a routerLink="/pomodoro"> Link to pomodoro </a></li>
+    <li><a routerLink="/article"> Articles </a></li>
+    <li><a routerLink="/article/0"> Article 0 </a></li>
+    <li><a routerLink="/page-random">Error </a></li>
+  </ol>
 
   <hr>
 
-  <a routerLink="/article"> Link to list of articles </a><br>
-  <a routerLink="/article/0"> Link to post 0 </a><br>
-  <a routerLink="/pepe">Error </a>
+
 </p-sidebar>

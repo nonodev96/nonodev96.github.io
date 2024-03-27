@@ -1,16 +1,15 @@
-<p-dataView [value]="listArticlesMatter_signal()" [sortField]="sortField" [sortOrder]="sortOrder" [layout]="layout" [rows]="2" [paginator]="true">
+<p-dataView [value]="items()" [sortField]="sortField" [sortOrder]="sortOrder" [layout]="layout">
   <ng-template pTemplate="header">
     <div class="row d-flex justify-content-between">
-      <div class="col-xs-12 col-md-12 col-md-4 col-lg-4">
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
         <span class="p-input-icon-left p-fluid">
           <i class="pi pi-search"></i>
-          <input type="text" pInputText placeholder="Buscar" [(ngModel)]="search" />
+          <input type="text" pInputText placeholder="Buscar" #searchQuery (input)="onSearchUpdated(searchQuery.value)" />
         </span>
       </div>
-      <div class="col-xs-12 col-md-12 col-md-8 col-lg-8">
+      <div class="col-12 col-sm-12 col-md-8 col-lg-8">
         <div class="d-flex justify-content-end gap-3">
-          <p-multiSelect [options]="allKeywords()" [(ngModel)]="selectedKeywords" optionLabel="name" selectedItemsLabel="{0} categorías seleccionadas" placeholder="Selecciona las categorías"></p-multiSelect>
-          <p-dropdown [options]="sortOptions" placeholder="Ordenar por título" (onChange)="onSortChange($event)"></p-dropdown>
+          <p-dropdown [options]="sortOptions" placeholder="Ordenar por ..." (onChange)="onSortChange($event)"></p-dropdown>
           <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
         </div>
       </div>
@@ -18,36 +17,35 @@
   </ng-template>
 
   <ng-template pTemplate="list">
-    <div class="article-menu row row-cols-xs-12 row-cols-sm-12 row-cols-md-12 row-cols-lg-12 row-cols-xl-12 p-3">
-      @for (item of listArticlesMatter_signal(); track item; let first = $first) {
+    <div class="article row row-cols-12 row-cols-sm-12 row-cols-md-12 row-cols-lg-12 row-cols-xl-12 p-3">
+      @for (item of items(); track item; let first = $first) {
       <div class="col-12">
-        <article role="article" class="article-menu__item">
+        <article role="article" class="article__item">
           <div class="row">
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4">
               <a [routerLink]="['/article', item.postId]">
-                <img class="article-menu__cover img-fluid rounded" [src]="item.cover" [alt]="item.title" title="{{item.title}}" />
+                <img class="article__cover img-fluid rounded" [src]="item.cover" [alt]="item.title" title="{{item.title}}" />
               </a>
-              <div style="position: absolute; left: 1.5em; top: 0.5em">
+              <div class="article__chips">
                 @for (chip of item.chips; track chip.id){
                 <p-chip [label]="chip.label" [icon]="chip.icon" ngClass="pr-2" styleClass="fs-075"></p-chip>
                 }
               </div>
             </div>
-            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-              <h3 class="article-menu__title pt-3">
-                <a [routerLink]="['/article', item.postId]">
-                  {{item.title}}
-                </a>
-              </h3>
 
-              <p class="article-menu__summary">{{ item.summary }}</p>
-              <p>
-                @for (keyword of item.keywords; track keyword){
-                <p-tag [value]="keyword" ngClass="pr-1" styleClass="fs-075">#</p-tag>
-                }
-              </p>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+              <div class="article__content article__content--list">
+                <h3 class="article__title"><a [routerLink]="['/article', item.postId]">{{item.title}}</a></h3>
+                <p class="article__summary">{{ item.summary }}</p>
+                <p>
+                  @for (keyword of item.keywords; track keyword){
+                  <p-tag [value]="keyword" ngClass="pr-1" styleClass="fs-075">#</p-tag>
+                  }
+                </p>
+              </div>
             </div>
           </div>
+
         </article>
       </div>
       }
@@ -55,33 +53,32 @@
   </ng-template>
 
   <ng-template pTemplate="grid">
-    <div class="article-menu row row-cols-1 row-cols-xs-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 p-3">
-      @for (item of listArticlesMatter_signal(); track item) {
+    <div class="article row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 p-3">
+      @for (item of items(); track item) {
       <div class="col">
-        <article role="article" class="article-menu__item">
+        <article role="article" class="article__item">
           <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
               <a [routerLink]="['/article', item.postId]">
-                <img class="article-menu__cover img-fluid rounded" [src]="item.cover" [alt]="item.title" title="{{item.title}}" />
+                <img class="article__cover img-fluid rounded" [src]="item.cover" [alt]="item.title" title="{{item.title}}" />
               </a>
-              <div style="position: absolute; left: 1.5em; top: 0.5em">
+              <div class="article__chips">
                 @for (chip of item.chips; track chip.id){
                 <p-chip [label]="chip.label" [icon]="chip.icon" ngClass="pr-2" styleClass="fs-075"></p-chip>
                 }
               </div>
             </div>
 
-            <div class="article-menu__content">
-              <h3 class="article-menu__title"><a [routerLink]="['/article', item.postId]">{{ item.title }}</a></h3>
-              <p class="article-menu__summary">{{ item.summary }}</p>
-            </div>
-
-            <div class="article-menu__footer">
-              <p>
-                @for (keyword of item.keywords; track keyword){
-                <p-tag [value]="keyword" ngClass="pr-1" styleClass="fs-075">#</p-tag>
-                }
-              </p>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="article__content article__content--grid">
+                <h3 class="article__title"><a [routerLink]="['/article', item.postId]">{{ item.title }}</a></h3>
+                <p class="article__summary">{{ item.summary }}</p>
+                <p>
+                  @for (keyword of item.keywords; track keyword){
+                  <p-tag [value]="keyword" ngClass="pr-1" styleClass="fs-075">#</p-tag>
+                  }
+                </p>
+              </div>
             </div>
           </div>
         </article>

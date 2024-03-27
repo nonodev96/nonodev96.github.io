@@ -30,7 +30,6 @@ export type PostChip_t = {
   label: string,
   icon: string
 }
-
 export type PostChips_t = PostChip_t[]
 
 export type PostAuthor_t = {
@@ -40,14 +39,13 @@ export type PostAuthor_t = {
 }
 export type PostAuthors_t = PostAuthor_t[]
 
-
 export type Post_t = {
   postId: number;
   filename: string;
   title: string;
   cover: string;
-  chips: PostChips_t;
-  authors: PostAuthors_t;
+  chips: PostChip_t[];
+  authors: PostAuthor_t[]
   summary: string;
   keywords: string[];
   categories: string[];

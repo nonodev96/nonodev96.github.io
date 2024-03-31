@@ -1,22 +1,80 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { filter, tap } from 'rxjs';
 import { ButtonModule } from 'primeng/button';
-import { MenuComponent } from '@app/components/menu/menu.component';
+import { DropdownModule, DropdownFilterOptions } from 'primeng/dropdown';
 import { SidebarModule } from 'primeng/sidebar';
 import { NavigationError, Router, RouterLink } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { MessagesModule } from 'primeng/messages';
-import { ConfigService } from '@app/services/config/config.service';
-import { filter, tap } from 'rxjs';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 
+import { ConfigService } from '@app/services/config/config.service';
+import { MenuComponent } from '@app/components/menu/menu.component';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'nn-config',
   standalone: true,
-  imports: [CommonModule, ButtonModule, MenuComponent, SidebarModule, RouterLink, MessagesModule],
+  imports: [CommonModule, ButtonModule, MenuComponent, SidebarModule, RouterLink, MessagesModule, FormsModule, DropdownModule, InputGroupModule, InputGroupAddonModule],
   templateUrl: './config.component.html',
   styleUrl: './config.component.scss'
 })
 export class ConfigComponent {
+
+  themes: { theme: string }[] = [
+    { theme: 'bootstrap4-light-blue' },
+    { theme: 'bootstrap4-light-purple' },
+    { theme: 'bootstrap4-dark-blue' },
+    { theme: 'bootstrap4-dark-purple' },
+    { theme: 'md-light-indigo' },
+    { theme: 'md-light-deeppurple' },
+    { theme: 'md-dark-indigo' },
+    { theme: 'md-dark-deeppurple' },
+    { theme: 'mdc-light-indigo' },
+    { theme: 'mdc-light-deeppurple' },
+    { theme: 'mdc-dark-indigo' },
+    { theme: 'mdc-dark-deeppurple' },
+    { theme: 'fluent-light' },
+    { theme: 'lara-light-blue' },
+    { theme: 'lara-light-indigo' },
+    { theme: 'lara-light-purple' },
+    { theme: 'lara-light-teal' },
+    { theme: 'lara-dark-blue' },
+    { theme: 'lara-dark-indigo' },
+    { theme: 'lara-dark-purple' },
+    { theme: 'lara-dark-teal' },
+    { theme: 'soho-light' },
+    { theme: 'soho-dark' },
+    { theme: 'viva-light' },
+    { theme: 'viva-dark' },
+    { theme: 'mira' },
+    { theme: 'nano' },
+    { theme: 'saga-blue' },
+    { theme: 'saga-green' },
+    { theme: 'saga-orange' },
+    { theme: 'saga-purple' },
+    { theme: 'vela-blue' },
+    { theme: 'vela-green' },
+    { theme: 'vela-orange' },
+    { theme: 'vela-purple' },
+    { theme: 'arya-blue' },
+    { theme: 'arya-green' },
+    { theme: 'arya-orange' },
+    { theme: 'arya-purple' },
+    { theme: 'nova' },
+    { theme: 'nova-alt' },
+    { theme: 'nova-accent' },
+    { theme: 'luna-amber' },
+    { theme: 'luna-blue' },
+    { theme: 'luna-green' },
+    { theme: 'luna-pink' },
+    { theme: 'rhea' },
+  ];
+  filterValue: string = '';
+
+  selectedCountry: string = '';
+
 
   constructor(private router: Router,
     private messageService: MessageService,
@@ -49,5 +107,23 @@ export class ConfigComponent {
 
   close() {
     this.configService.sidebarConfigVisible = false
+  }
+
+  resetFunction(options: DropdownFilterOptions) {
+    if (options.reset) {
+      options.reset();
+    }
+    this.filterValue = '';
+  }
+
+  customFilterFunction(event: KeyboardEvent, options: DropdownFilterOptions) {
+    if (options.filter) {
+      options.filter(event);
+    }
+  }
+
+  onChangeSelectedTheme($event: any) {
+    const { theme } = $event
+    this.configService.setTheme(theme)
   }
 }

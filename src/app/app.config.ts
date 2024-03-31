@@ -4,7 +4,7 @@ import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 import { CLIPBOARD_OPTIONS, MARKED_OPTIONS, provideMarkdown } from 'ngx-markdown';
-import { gfmHeadingId } from 'marked-gfm-heading-id';
+import { getHeadingList, gfmHeadingId } from 'marked-gfm-heading-id';
 
 import { markedOptionsFactory } from '@app/marked-options-factory';
 import { AnchorService } from '@shared/anchor/anchor.service';
@@ -45,7 +45,9 @@ export const appConfig: ApplicationConfig = {
         useFactory: markedOptionsFactory,
         deps: [AnchorService],
       },
-      markedExtensions: [gfmHeadingId()],
+      markedExtensions: [
+        gfmHeadingId(),
+      ],
       clipboardOptions: {
         provide: CLIPBOARD_OPTIONS,
         useValue: { buttonComponent: ClipboardButtonComponent },

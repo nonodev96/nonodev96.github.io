@@ -39,7 +39,27 @@
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css",
               "node_modules/katex/dist/katex.min.css",
               "src/scss/prism-theme.scss",
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input": "node_modules/primeng/resources/themes/bootstrap4-light-blue/theme.css",
+                "bundleName": "bootstrap4-light-blue",
+                "inject": false
+              },
+              {
+                "input": "node_modules/primeng/resources/themes/bootstrap4-light-purple/theme.css",
+                "bundleName": "bootstrap4-light-purple",
+                "inject": false
+              },
+              {
+                "input": "node_modules/primeng/resources/themes/bootstrap4-dark-blue/theme.css",
+                "bundleName": "bootstrap4-dark-blue",
+                "inject": false
+              },
+              {
+                "input": "node_modules/primeng/resources/themes/bootstrap4-dark-purple/theme.css",
+                "bundleName": "bootstrap4-dark-purple",
+                "inject": false
+              }
             ],
             "scripts": [
               "node_modules/prismjs/prism.js",

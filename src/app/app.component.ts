@@ -9,6 +9,7 @@ import { CardModule } from 'primeng/card';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { ConfigComponent } from '@app/components/config/config.component';
+import { ConfigService } from './services/config/config.service';
 
 @Component({
   selector: 'nn-root',
@@ -28,7 +29,7 @@ import { ConfigComponent } from '@app/components/config/config.component';
 export class AppComponent {
   title = 'nonodev96.github.io';
 
-  constructor(public translate: TranslateService) {
+  constructor(public translate: TranslateService, private configService: ConfigService) {
     translate.setDefaultLang('en-GB');
     translate.use('en-GB');
   }

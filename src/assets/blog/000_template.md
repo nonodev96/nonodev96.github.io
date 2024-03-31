@@ -23,76 +23,191 @@ keywords:
 summary: "Aprende a estructurar documentos utilizando sintaxis sencilla de Markdown para crear títulos, listas, enlaces e imágenes. También se cubriría cómo personalizar el estilo y diseño del documento utilizando extensiones y características avanzadas de Markdown, como tablas y bloques de código."
 ---
 
-# Título 1
+# Guía de markdown
+
+Aprende a estructurar documentos utilizando sintaxis sencilla de Markdown para crear títulos, listas, enlaces e imágenes. También se cubriría cómo personalizar el estilo y diseño del documento utilizando extensiones y características avanzadas de Markdown, como tablas y bloques de código.
+
+### Títulos
+
+```àscii
+
+# Títulos 1
 
 ## Título 2
 
 ### Título 3
 
+```
+
+---
+
+### Texto con enfasís y en negrita
+
+Formato: `_énfasis_`, `**negrita**`
+
 Texto normal con _énfasis_ y **negrita**.
 
-Lista no ordenada:
+### Lista no ordenada:
+
+Formato:
+
+```ascii
+- Elemento 1
+- Elemento 2
+- Elemento 3
+```
 
 - Elemento 1
 - Elemento 2
 - Elemento 3
 
-Lista ordenada:
+### Lista ordenada:
+
+Formato:
+
+```àscii
+1. Primer elemento
+2. Segundo elemento
+3. Tercer elemento
+```
 
 1. Primer elemento
 2. Segundo elemento
 3. Tercer elemento
 
-Enlaces:
+---
+
+### Enlaces
+
+```ascii
+[Enlace a Google](https://www.google.com)
+```
+
 [Enlace a Google](https://www.google.com)
 
-Imágenes:
+---
 
-Inline-style:
+### Imágenes
+
+Formato:
+
+```ascii
+![alt text](/favicon.ico "Logo Title Text 1")
+```
+
 ![alt text](/favicon.ico "Logo Title Text 1")
 
-Reference-style:
-![alt text][logo]
+---
 
-[logo]: /favicon.ico "Logo Title Text 2"
+### Imágenes por referencia
 
-Bloque de código:
+Formato:  
+
+```ascii
+![alt text][logo-1]
+![alt text][logo-2]
+
+[logo-1]: /favicon.ico "Logo Title Text 2"
+[logo-2]: /favicon.ico "Logo Title Text 2"
+```
+
+![alt text][logo-1]
+
+[logo-1]: /favicon.ico "Logo Title Text 2"
+
+---
+
+### Bloque de código:
+
+````ascii
+```python
+print("Hola, mundo!")
+```
+````
 
 ```python
 print("Hola, mundo!")
-
 ```
 
-Citas:
+---
+
+### Citas:
+
+Formato: `> TEXTO`
 
 > Esto es una cita.
 
-## Línea horizontal:
+---
 
-Tablas:
-| Encabezado 1 | Encabezado 2 |
-| ------------ | ------------ |
-| Celda 1,1 | Celda 1,2 |
-| Celda 2,1 | Celda 2,2 |
+### Línea horizontal
 
-Checkbox:
+Formato: `---`
+
+---
+
+### Tablas
+
+Formato:
+
+```ascii
+| Encabezado | Alineado a la izquierda | Alineado a la derecha | Alineado centrado |
+| ---------- | :---------------------- | --------------------: | :---------------: |
+| Celda 1,1  | Celda 1,1               |             Celda 1,2 |     Celda 1,2     |
+| Celda 2,1  | Celda 2,1               |             Celda 2,2 |     Celda 2,2     |
+```
+
+| Encabezado | Alineado a la izquierda | Alineado a la derecha | Alineado centrado |
+| ---------- | :---------------------- | --------------------: | :---------------: |
+| Celda 1,1  | Celda 1,1               |             Celda 1,2 |     Celda 1,2     |
+| Celda 2,1  | Celda 2,1               |             Celda 2,2 |     Celda 2,2     |
+
+---
+
+### Checkbox
+
+Formato:
+
+```ascii
+- [x] Tarea completada
+- [ ] Tarea pendiente
+```
 
 - [x] Tarea completada
 - [ ] Tarea pendiente
 
-Emoji:
+---
+
+### Emoji:
+
+Formato: `:emoji-key:`
 
 Esto es un emoji :heart:
 
-Latex:
+---
+
+### Latex
+
+Latex en línea:
+
+Formato: `$ LATEX EQUATION $`
 
 ```latex
-f(x) = \int_{-\infty}^\infty \hat f(\xi) e^{2 \pi i \xi x} d\xi
+$ f(x) = \int_{-\infty}^\infty \hat f(\xi) e^{2 \pi i \xi x} d\xi $
 ```
 
-$f(x) = \int_{-\infty}^\infty \hat f(\xi) e^{2 \pi i \xi x} d\xi$
+$ f(x) = \int\_{-\infty}^\infty \hat f(\xi) e^{2 \pi i \xi x} d\xi $
 
-Mermaid:
+Latex en bloque:
+
+Formato: `$$ LATEX EQUATION $$`
+
+```latex
+$$ f(x) = \int_{-\infty}^\infty \hat f(\xi) e^{2 \pi i \xi x} d\xi $$
+```
+
+$$ f(x) = \int\_{-\infty}^\infty \hat f(\xi) e^{2 \pi i \xi x} d\xi $$
+
+## Mermaid:
 
 ```mermaid
 graph TD;

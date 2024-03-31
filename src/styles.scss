@@ -1,12 +1,11 @@
 @import "reset";
-
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 
 // @import "primeng/resources/themes/bootstrap4-light-blue/theme.css";
 // @import "primeng/resources/themes/bootstrap4-light-purple/theme.css";
 // @import "primeng/resources/themes/bootstrap4-dark-blue/theme.css";
-@import "primeng/resources/themes/bootstrap4-dark-purple/theme.css";
+// @import "primeng/resources/themes/bootstrap4-dark-purple/theme.css";
 // @import "primeng/resources/themes/md-light-indigo/theme.css";
 // @import "primeng/resources/themes/md-light-deeppurple/theme.css";
 // @import "primeng/resources/themes/md-dark-indigo/theme.css";
@@ -84,8 +83,6 @@
 
 body {
   font-family: "DMMono-Regular", sans-serif;
-  color: var(--text-color);
-
 }
 
 .text-justify {

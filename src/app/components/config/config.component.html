@@ -2,8 +2,37 @@
   <i class="pi pi-cog"></i>
 </p-button>
 <p-sidebar [(visible)]="configService.sidebarConfigVisible" position="right">
-  <h3>Config</h3>
-  <p-button (onClick)="close()">Close</p-button>
+  <div class="row">
+    <div class="col">
+      <h3>Config</h3>
+    </div>
+    <div class="col">
+      <p-button icon="pi pi-times" (onClick)="close()"></p-button>
+    </div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col">
+      <p-dropdown [options]="themes" [(ngModel)]="selectedCountry" (ngModelChange)="onChangeSelectedTheme($event)" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Country" styleClass="w-20rem">
+        <ng-template pTemplate="filter" let-options="options">
+          <p-inputGroup>
+            <input type="text" pInputText placeholder="Filter" [(ngModel)]="filterValue" (keyup)="customFilterFunction($event, options)" />
+            <p-button icon="pi pi-times" class="p-button-danger" (click)="resetFunction(options)"></p-button>
+          </p-inputGroup>
+        </ng-template>
+        <ng-template pTemplate="selectedItem" let-selectedOption>
+          <div>{{ selectedOption.theme }}</div>
+        </ng-template>
+        <ng-template let-country pTemplate="item">
+          <div>{{ country.theme }}</div>
+        </ng-template>
+      </p-dropdown>
+    </div>
+  </div>
+
+
   <ol>
     <li><a routerLink="/"> Page home </a></li>
     <li><a routerLink="/lorem"> Page lorem </a></li>

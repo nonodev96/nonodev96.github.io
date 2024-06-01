@@ -6,7 +6,7 @@
     <div class="d-flex flex-column align-items-center justify-content-center">
       @if (authors.length >0) {
       <p-avatarGroup styleClass="mb-3">
-        @for (author of authors;track author.id){
+        @for (author of authors;track author.id) {
         <p-avatar [image]="author.image" [pTooltip]="author.name" tooltipPosition="top" [attr.aria-labelledby]="author.name" size="large" shape="circle"></p-avatar>
         }
       </p-avatarGroup>
@@ -14,23 +14,23 @@
     </div>
   </div>
   <div class="mb-3">
-    <div class="row position-relative">
+    <div class="row post__header">
       <div class="col-12">
         <img [src]="cover" alt="Cover" class="w-100">
-      </div>
-      <div style="position: absolute; top: 1em; left: 2em; ">
-        <p>
-          @for (chip of chips;track chip.id) {
-          <p-chip [label]="chip.label" [icon]="chip.icon" class="pr-3"></p-chip>
-          } @empty {
-          <p-chip [label]="date" icon="pi pi-calendar"></p-chip>
-          }
-        </p>
-        <p>
-          @for (keyword of keywords; track keyword) {
-          <p-tag [value]="keyword" [rounded]="true" class="pr-3">#</p-tag>
-          }
-        </p>
+        <div class="post__header--chips">
+          <p>
+            @for (chip of chips;track chip.id) {
+            <p-chip [label]="chip.label" [icon]="chip.icon" class="pr-3"></p-chip>
+            } @empty {
+            <p-chip [label]="date" icon="pi pi-calendar"></p-chip>
+            }
+          </p>
+          <p>
+            @for (keyword of keywords; track keyword) {
+            <p-tag [value]="keyword" [rounded]="true" class="pr-3">#</p-tag>
+            }
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -43,7 +43,9 @@
         <i class="pi pi-copy"></i>
       </button>
     </ng-template>
-    <markdown clipboard emoji mermaid katex [clipboardButtonTemplate]="buttonTemplate" [katexOptions]="katexOptions" [data]="content"></markdown>
+
+    <markdown clipboard emoji mermaid katex [components]="components" [clipboardButtonTemplate]="buttonTemplate" [katexOptions]="katexOptions" [data]="content"></markdown>
+
     <hr class="mt-4 mb-4">
     <div class="flex flex-column sm:flex-row my-8 w-full gap-3">
       <p-button pRipple icon="pi pi-twitter" label="Twitter"></p-button>

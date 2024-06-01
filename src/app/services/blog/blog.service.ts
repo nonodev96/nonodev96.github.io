@@ -3,7 +3,11 @@ import { HttpClient } from '@angular/common/http';
 
 import matter from 'front-matter';
 
-import { InfoBlog_t, FileBlog_t, Post_t, Matter_t } from '@app/types';
+import { InfoBlog_t, FileBlog_t, Matter_t } from '@app/types';
+import { Post_t } from '@app/models/Posts';
+import { Firestore, collection, collectionData, doc, getDoc } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +16,8 @@ export class BlogService {
   private apiUrl_ListArticles = '/assets/blog/list-articles.json';
   private apiUrl_Post = '/assets/blog/';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+    private firestore: Firestore) {
   }
 
   async getListPosts(): Promise<InfoBlog_t> {
@@ -37,7 +42,6 @@ export class BlogService {
       })
   }
 
-
   async getPostMatterById(id: number): Promise<Post_t> {
     const listPosts: InfoBlog_t = await this.getListPosts();
     const itemPost: FileBlog_t = listPosts.data.filter(item => item.id === parseInt(id.toString()))[0]
@@ -45,7 +49,8 @@ export class BlogService {
     return this.getPostByFilename(itemPost.filename)
       .then((post: string) => {
         const { attributes, body } = matter(post) as Matter_t
-        return {
+
+        const _post = {
           postId: attributes.postId,
           filename: attributes.filename,
           title: attributes.title,
@@ -57,6 +62,8 @@ export class BlogService {
           summary: attributes.summary,
           content: body
         }
+        console.log({ _post })
+        return _post
       })
   }
 
@@ -77,5 +84,17 @@ export class BlogService {
           content: body
         }
       })
+  }
+
+
+  getAllPosts(): Observable<Post_t[]> {
+    const postsRef = collection(this.firestore, 'posts')
+    return collectionData(postsRef, { idField: 'refId' }) as Observable<Post_t[]>
+  }
+
+  async getPostsByRefId(refId: string): Promise<Post_t> {
+    const postsRef = doc(this.firestore, 'posts', refId)
+    const docSnap = await getDoc(postsRef)
+    return docSnap.data() as Post_t
   }
 }

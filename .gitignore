@@ -43,3 +43,8 @@ Thumbs.db
 
 
 src/assets/development/*
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json

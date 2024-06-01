@@ -6,9 +6,10 @@ import { MarkdownComponent } from 'ngx-markdown';
 import matter from 'front-matter';
 import { PostComponent } from '@app/components/post/post.component';
 import { BlogService } from '@app/services/blog/blog.service';
-import { Matter_t, Post_t } from '@app/types';
+import { Matter_t } from '@app/types';
 import { MessageService } from 'primeng/api';
 import { Meta, Title } from '@angular/platform-browser';
+import { Post_t } from '@app/models/Posts';
 
 @Component({
   selector: 'nn-posts-page',

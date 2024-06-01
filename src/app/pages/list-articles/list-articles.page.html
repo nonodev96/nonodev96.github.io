@@ -60,7 +60,7 @@
           <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
               <a [routerLink]="['/article', item.postId]">
-                <img class="article__cover img-fluid rounded" [src]="item.cover" [alt]="item.title" title="{{item.title}}" />
+                <img class="article__cover rounded" [src]="item.cover" [alt]="item.title" title="{{item.title}}" />
               </a>
               <div class="article__chips">
                 @for (chip of item.chips; track chip.id){

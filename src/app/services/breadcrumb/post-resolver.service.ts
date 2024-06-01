@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot } from '@angular/router';
-import { Post_t } from '@app/types';
+import { Post_t } from '@app/models/Posts';
 import { BlogService } from '@app/services/blog/blog.service';
 
 @Injectable({

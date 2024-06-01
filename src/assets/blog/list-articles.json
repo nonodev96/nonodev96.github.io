@@ -19,6 +19,11 @@
       "id": 3,
       "name": "003 Promises",
       "filename": "003_promises-js.md"
+    },
+    {
+      "id": 4,
+      "name": "004 Apache Echarts",
+      "filename": "004_echarts.md"
     }
   ]
 }

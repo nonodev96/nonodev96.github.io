@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { KatexOptions, MarkdownComponent } from 'ngx-markdown';
 import { ButtonModule } from 'primeng/button';
 import { ChipModule } from 'primeng/chip';
-import { PostAuthors_t, PostChips_t } from '@app/types';
+import { PostAuthors_t, PostChips_t } from '@app/models/Posts';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { AvatarModule } from 'primeng/avatar';
 import { TooltipModule } from 'primeng/tooltip';
@@ -54,6 +54,11 @@ export class PostComponent {
   content: string = '';
 
 
+  components = {
+    custom: class CustomComponent {
+
+    }
+  }
 
   @Input({ required: false })
   katexOptions: KatexOptions = {

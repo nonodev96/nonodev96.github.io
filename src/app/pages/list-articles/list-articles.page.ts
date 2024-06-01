@@ -17,14 +17,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MultiSelectModule } from 'primeng/multiselect';
 
 import { BlogService } from '@app/services/blog/blog.service';
-import { Post_t } from '@app/types';
+import { Post_t } from '@app/models/Posts';
+import { EchartComponent } from "../../components/echart/echart.component";
 @Component({
   selector: 'nn-list-articles',
   standalone: true,
-  imports: [CommonModule, ButtonModule, MultiSelectModule, RouterLink, CardModule, RippleModule, SkeletonModule, DataViewModule, DropdownModule, TagModule, ChipModule, InputTextModule, FormsModule],
   templateUrl: './list-articles.page.html',
   styleUrl: './list-articles.page.scss',
-  // encapsulation: ViewEncapsulation.None
+  imports: [CommonModule, ButtonModule, MultiSelectModule, RouterLink, CardModule, RippleModule, SkeletonModule, DataViewModule, DropdownModule, TagModule, ChipModule, InputTextModule, FormsModule, EchartComponent]
 })
 export class ListArticlesPage implements OnInit {
   listArticlesMatter_signal = signal<Post_t[]>([])
@@ -68,6 +68,17 @@ export class ListArticlesPage implements OnInit {
 
   ngOnInit(): void {
     this.titleService.setTitle('Artículos de programación')
+
+    this.blogService.getAllPosts().subscribe(async (posts: Post_t[]) => {
+      console.log('posts', posts);
+      for (const { refId } of posts) {
+
+        if (refId) {
+          const t = await this.blogService.getPostsByRefId(refId)
+          console.log(t)
+        }
+      }
+    })
 
     this.blogService.getListPosts().then(
       async (info_blog) => {

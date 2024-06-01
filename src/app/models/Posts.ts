@@ -2,6 +2,7 @@ export interface Post_t {
     refId?: string;
 
     postId: number;
+    slug: string;
     filename: string;
     title: string;
     cover: string;

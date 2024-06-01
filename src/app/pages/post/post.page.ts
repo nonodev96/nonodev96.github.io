@@ -10,6 +10,7 @@ import { Matter_t } from '@app/types';
 import { MessageService } from 'primeng/api';
 import { Meta, Title } from '@angular/platform-browser';
 import { Post_t } from '@app/models/Posts';
+import { toPost } from '@app/shared/utils';
 
 @Component({
   selector: 'nn-posts-page',
@@ -22,6 +23,7 @@ export class PostPage implements OnInit, OnDestroy {
 
   post = signal<Post_t>({
     postId: 0,
+    slug: '',
     filename: '',
     title: '',
     cover: '',
@@ -44,26 +46,17 @@ export class PostPage implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
-      const postId: number = parseInt(params.get('id')!)
+      const slug: string = params.get('slug')!
+      console.log({ params });
+
       this.blogService
-        .getPostById(postId)
+        .getPostBySlug(slug)
         .then((post) => {
           const { attributes, body } = matter(post) as Matter_t
           this.titleService.setTitle(attributes.title);
           this.metaService.addTag({ name: 'author', content: attributes.authors.map((a) => a.name).join(', ') })
 
-          this.post.set({
-            postId: attributes.postId,
-            filename: attributes.filename,
-            title: attributes.title,
-            authors: attributes.authors,
-            cover: attributes.cover,
-            categories: attributes.categories,
-            keywords: attributes.keywords,
-            chips: attributes.chips,
-            summary: attributes.summary,
-            content: body
-          })
+          this.post.set(toPost(attributes, body))
         })
 
     });

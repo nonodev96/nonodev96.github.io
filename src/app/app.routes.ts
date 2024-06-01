@@ -13,7 +13,7 @@ import { Spline3dTestComponent } from '@app/debug/spline-3d-test/spline-3d-test.
 import { ListArticlesPage } from '@app/pages/list-articles/list-articles.page';
 import { PostPage } from '@app/pages/post/post.page';
 import { PomodoroPage } from '@app/pages/pomodoro/pomodoro.page';
-import { PostResolverService } from '@app/services/breadcrumb/post-resolver.service';
+import { PostResolverService } from '@app/shared/resolver/post-resolver.service';
 
 export const routes: Routes = [
   {
@@ -58,13 +58,13 @@ export const routes: Routes = [
         component: ListArticlesPage
       },
       {
-        path: ':id',
+        path: ':slug',
         data: {
           breadcrumb: (data: Data) => {
             return `Post | ${data['post'].title}`
           }
         },
-        resolve: { post: PostResolverService }, // resolver to retrieve the object used in the breadcrumb construction
+        resolve: { post: PostResolverService },
         component: PostPage
       },
     ]

@@ -4,6 +4,7 @@ filename: "003_promises.md"
 layout: "post"
 title: "Asincronia y promesas en JavaScript "
 cover: "/assets/development/cover.png"
+slug: "promises-js"
 chips:
   - label: "2023-12-17"
     icon: "pi pi-calendar"
@@ -70,8 +71,8 @@ Citas:
 Tablas:
 | Encabezado 1 | Encabezado 2 |
 | ------------ | ------------ |
-| Celda 1,1 | Celda 1,2 |
-| Celda 2,1 | Celda 2,2 |
+| Celda 1,1    | Celda 1,2    |
+| Celda 2,1    | Celda 2,2    |
 
 Checkbox:
 

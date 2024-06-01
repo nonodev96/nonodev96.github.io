@@ -23,7 +23,7 @@
         <article role="article" class="article__item">
           <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-4">
-              <a [routerLink]="['/article', item.postId]">
+              <a [routerLink]="['/article', item.slug]">
                 <img class="article__cover img-fluid rounded" [src]="item.cover" [alt]="item.title" title="{{item.title}}" />
               </a>
               <div class="article__chips">
@@ -35,7 +35,7 @@
 
             <div class="col-12 col-sm-12 col-md-12 col-lg-8">
               <div class="article__content article__content--list">
-                <h3 class="article__title"><a [routerLink]="['/article', item.postId]">{{item.title}}</a></h3>
+                <h3 class="article__title"><a [routerLink]="['/article', item.slug]">{{item.title}}</a></h3>
                 <p class="article__summary">{{ item.summary }}</p>
                 <p>
                   @for (keyword of item.keywords; track keyword){
@@ -59,7 +59,7 @@
         <article role="article" class="article__item">
           <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-              <a [routerLink]="['/article', item.postId]">
+              <a [routerLink]="['/article', item.slug]">
                 <img class="article__cover rounded" [src]="item.cover" [alt]="item.title" title="{{item.title}}" />
               </a>
               <div class="article__chips">
@@ -71,7 +71,7 @@
 
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
               <div class="article__content article__content--grid">
-                <h3 class="article__title"><a [routerLink]="['/article', item.postId]">{{ item.title }}</a></h3>
+                <h3 class="article__title"><a [routerLink]="['/article', item.slug]">{{ item.title }}</a></h3>
                 <p class="article__summary">{{ item.summary }}</p>
                 <p>
                   @for (keyword of item.keywords; track keyword){

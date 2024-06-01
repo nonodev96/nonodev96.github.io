@@ -3,27 +3,32 @@
     {
       "id": 0,
       "name": "000 template",
-      "filename": "000_template.md"
+      "filename": "000_template.md",
+      "slug": "template-markdown"
     },
     {
       "id": 1,
       "name": "001 Notation",
-      "filename": "001_notation.md"
+      "filename": "001_notation.md",
+      "slug": "notación-matemática-modelos-adversarios"
     },
     {
       "id": 2,
       "name": "002 Descripción",
-      "filename": "002_descripción.md"
+      "filename": "002_descripción.md",
+      "slug": "descripción-general-del-aprendizaje-adversario"
     },
     {
       "id": 3,
       "name": "003 Promises",
-      "filename": "003_promises-js.md"
+      "filename": "003_promises-js.md",
+      "slug": "promises-js"
     },
     {
       "id": 4,
       "name": "004 Apache Echarts",
-      "filename": "004_echarts.md"
+      "filename": "004_echarts.md",
+      "slug": "apache-echarts"
     }
   ]
 }

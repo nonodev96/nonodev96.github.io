@@ -44,11 +44,15 @@
       </button>
     </ng-template>
 
-    <markdown clipboard emoji mermaid katex [components]="components" [clipboardButtonTemplate]="buttonTemplate" [katexOptions]="katexOptions" [data]="content"></markdown>
+    <markdown clipboard emoji mermaid katex [clipboardButtonTemplate]="buttonTemplate" [katexOptions]="katexOptions" [data]="content"></markdown>
 
     <hr class="mt-4 mb-4">
     <div class="flex flex-column sm:flex-row my-8 w-full gap-3">
-      <p-button pRipple icon="pi pi-twitter" label="Twitter"></p-button>
+      @for (author of authors; track author.id) {
+      <a href="https://twitter.com/{{author.name}}" target="_blank">
+        <p-button pRipple icon="pi pi-twitter" label="Twitter"></p-button>
+      </a>
+      }
     </div>
   </div>
 </div>

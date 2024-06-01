@@ -7,6 +7,7 @@ import { InfoBlog_t, FileBlog_t, Matter_t } from '@app/types';
 import { Post_t } from '@app/models/Posts';
 import { Firestore, collection, collectionData, doc, getDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { toPost } from '@app/shared/utils';
 
 
 @Injectable({
@@ -21,70 +22,49 @@ export class BlogService {
   }
 
   async getListPosts(): Promise<InfoBlog_t> {
-    return fetch(this.apiUrl_ListArticles)
-      .then(response => response.json())
-      .then((response: InfoBlog_t) => {
-        return response;
-      })
+    const response = await fetch(this.apiUrl_ListArticles);
+    const data: InfoBlog_t = await response.json();
+    return data;
   }
 
   async getPostById(id: number): Promise<string> {
     const listPosts: InfoBlog_t = await this.getListPosts();
-    const itemPost: FileBlog_t = listPosts.data.filter(item => item.id === id)[0]
+    const itemPost: FileBlog_t = listPosts.data.filter((item) => item.id === id)[0]
+    return this.getPostByFilename(itemPost.filename)
+  }
+
+  async getPostBySlug(slug: string): Promise<string> {
+    const listPosts: InfoBlog_t = await this.getListPosts();
+    const itemPost: FileBlog_t = listPosts.data.filter((item) => item.slug === slug)[0]
     return this.getPostByFilename(itemPost.filename)
   }
 
   async getPostByFilename(filename: string): Promise<string> {
-    return fetch(this.apiUrl_Post + filename)
-      .then(response => response.text())
-      .then((data: string) => {
-        return data
-      })
+    const response = await fetch(this.apiUrl_Post + filename);
+    const data: string = await response.text();
+    return data;
+  }
+
+  async getPostMatterByFilename(filename: string): Promise<Post_t> {
+    const post: string = await this.getPostByFilename(filename);
+    const { attributes, body } = matter(post) as Matter_t;
+    return toPost(attributes, body);
   }
 
   async getPostMatterById(id: number): Promise<Post_t> {
     const listPosts: InfoBlog_t = await this.getListPosts();
     const itemPost: FileBlog_t = listPosts.data.filter(item => item.id === parseInt(id.toString()))[0]
-
-    return this.getPostByFilename(itemPost.filename)
-      .then((post: string) => {
-        const { attributes, body } = matter(post) as Matter_t
-
-        const _post = {
-          postId: attributes.postId,
-          filename: attributes.filename,
-          title: attributes.title,
-          authors: attributes.authors,
-          cover: attributes.cover,
-          chips: attributes.chips,
-          categories: attributes.categories,
-          keywords: attributes.keywords,
-          summary: attributes.summary,
-          content: body
-        }
-        console.log({ _post })
-        return _post
-      })
+    const { filename } = itemPost
+    return await this.getPostMatterByFilename(filename)
   }
 
-  async getPostMatterByFilename(filename: string): Promise<Post_t> {
-    return this.getPostByFilename(filename)
-      .then((post: string) => {
-        const { attributes, body } = matter(post) as Matter_t
-        return {
-          postId: attributes.postId,
-          filename: attributes.filename,
-          title: attributes.title,
-          authors: attributes.authors,
-          cover: attributes.cover,
-          chips: attributes.chips,
-          categories: attributes.categories,
-          keywords: attributes.keywords,
-          summary: attributes.summary,
-          content: body
-        }
-      })
+  async getPostMatterBySlug(slug: string): Promise<Post_t> {
+    const listPosts: InfoBlog_t = await this.getListPosts();
+    const itemPost: FileBlog_t = listPosts.data.filter(item => item.slug === slug)[0]
+    const { filename } = itemPost
+    return await this.getPostMatterByFilename(filename)
   }
+
 
 
   getAllPosts(): Observable<Post_t[]> {

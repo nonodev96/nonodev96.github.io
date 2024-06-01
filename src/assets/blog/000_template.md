@@ -4,7 +4,7 @@ filename: "000_template.md"
 layout: "post"
 title: "Template | Markdown Style Guide"
 cover: "/assets/development/cover.png"
-slug: "url-slug"
+slug: "template-markdown"
 chips:
   - label: "2023-12-17"
     icon: "pi pi-calendar"

@@ -11,8 +11,8 @@ export class PostResolverService {
   constructor(private readonly blogService: BlogService) { }
 
   async resolve(route: ActivatedRouteSnapshot): Promise<Post_t> {
-    const id = route.params['id'];
-    return await this.blogService.getPostMatterById(id);
+    const slug = route.params['slug'];
+    return await this.blogService.getPostMatterBySlug(slug);
   }
 
 }

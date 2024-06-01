@@ -18,7 +18,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 
 import { BlogService } from '@app/services/blog/blog.service';
 import { Post_t } from '@app/models/Posts';
-import { EchartComponent } from "../../components/echart/echart.component";
+import { EchartComponent } from '@app/components/echart/echart.component';
 @Component({
   selector: 'nn-list-articles',
   standalone: true,

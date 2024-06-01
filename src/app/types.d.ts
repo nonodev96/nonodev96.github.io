@@ -6,6 +6,7 @@ export type FileBlog_t = {
   id: number;
   name: string;
   filename: string;
+  slug: string;
 }
 
 export type InfoBlog_t = {

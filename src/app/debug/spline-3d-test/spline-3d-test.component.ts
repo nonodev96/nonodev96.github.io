@@ -7,10 +7,6 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './spline-3d-test.component.html',
   styleUrl: './spline-3d-test.component.scss',
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class Spline3dTestComponent {
-
-}
+export class Spline3dTestComponent {}

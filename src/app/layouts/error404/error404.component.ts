@@ -8,6 +8,4 @@ import { CommonModule } from '@angular/common';
   templateUrl: './error404.component.html',
   styleUrl: './error404.component.scss'
 })
-export class Error404Component {
-
-}
+export class Error404Component {}

@@ -9,6 +9,4 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'
 })
-export class HeroComponent {
-
-}
+export class HeroComponent {}

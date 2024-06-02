@@ -44,7 +44,7 @@ export const routes: Routes = [
         path: 'lorem',
         data: { breadcrumb: 'lorem' },
         component: LoremComponent
-      },
+      }
     ]
   },
   {
@@ -61,17 +61,16 @@ export const routes: Routes = [
         path: ':slug',
         data: {
           breadcrumb: (data: Data) => {
-            if (data?.post)
-              return `Post | ${data.post.title}`
-            return 'Post'
+            if (data?.['post']) return `Post | ${data['post'].title}`;
+            return 'Post';
           }
         },
         resolve: { post: PostResolverService },
         component: PostPage
-      },
+      }
     ]
   },
   { path: 'splide', component: Spline3dTestComponent },
   { path: 'error404', component: Error404Component },
-  { path: '**', redirectTo: '/error404' },
+  { path: '**', redirectTo: '/error404' }
 ];

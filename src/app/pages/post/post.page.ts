@@ -1,4 +1,10 @@
-import { Component, type OnDestroy, type OnInit, inject, signal } from '@angular/core';
+import {
+  Component,
+  type OnDestroy,
+  type OnInit,
+  inject,
+  signal
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
@@ -21,13 +27,12 @@ import type { Post_t } from '@app/models/Posts';
   styleUrl: './post.page.scss'
 })
 export class PostPage implements OnInit, OnDestroy {
+  private activatedRoute = inject(ActivatedRoute);
+  private titleService = inject(Title);
+  private metaService = inject(Meta);
 
-  private activatedRoute = inject(ActivatedRoute)
-  private titleService = inject(Title)
-  private metaService = inject(Meta)
-
-  public messageService = inject(MessageService)
-  public blogService = inject(BlogService)
+  public messageService = inject(MessageService);
+  public blogService = inject(BlogService);
 
   post = signal<Post_t>({
     postId: 0,
@@ -45,25 +50,22 @@ export class PostPage implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
-      const slug = params.get('slug')
+      const slug = params.get('slug');
       if (slug) {
-        this.blogService
-          .getPostBySlug(slug)
-          .then((post) => {
-            const { attributes, body } = matter(post) as Matter_t
-            this.titleService.setTitle(attributes.title);
-            this.metaService.addTag({
-              name: 'author',
-              content: attributes.authors.map((a) => a.name).join(', ')
-            })
-            this.post.set(toPost(attributes, body))
-          })
+        this.blogService.getPostBySlug(slug).then((post) => {
+          const { attributes, body } = matter(post) as Matter_t;
+          this.titleService.setTitle(attributes.title);
+          this.metaService.addTag({
+            name: 'author',
+            content: attributes.authors.map((a) => a.name).join(', ')
+          });
+          this.post.set(toPost(attributes, body));
+        });
       }
     });
   }
 
   ngOnDestroy(): void {
-    this.metaService.removeTag('name="author"')
+    this.metaService.removeTag('name="author"');
   }
-
 }

@@ -7,10 +7,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './clipboard-button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule]
 })
 export class ClipboardButtonComponent {
-
   onCopyToClipboard() {
     console.log('copy');
   }

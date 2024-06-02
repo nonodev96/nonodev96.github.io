@@ -7,6 +7,4 @@ import { Component } from '@angular/core';
   templateUrl: './card-post.component.html',
   styleUrl: './card-post.component.scss'
 })
-export class CardPostComponent {
-
-}
+export class CardPostComponent {}

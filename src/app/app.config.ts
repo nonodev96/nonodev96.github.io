@@ -1,9 +1,17 @@
-import { type ApplicationConfig, importProvidersFrom, SecurityContext } from '@angular/core';
+import {
+  type ApplicationConfig,
+  importProvidersFrom,
+  SecurityContext
+} from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 
-import { CLIPBOARD_OPTIONS, MARKED_OPTIONS, provideMarkdown } from 'ngx-markdown';
+import {
+  CLIPBOARD_OPTIONS,
+  MARKED_OPTIONS,
+  provideMarkdown
+} from 'ngx-markdown';
 import { gfmHeadingId } from 'marked-gfm-heading-id';
 
 import { markedOptionsFactory } from '@app/marked-options-factory';
@@ -22,23 +30,23 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-
     importProvidersFrom(
       TranslateModule.forRoot({
         defaultLanguage: 'en-GB',
         loader: {
           provide: TranslateLoader,
           useFactory: createTranslateLoader,
-          deps: [HttpClient],
-        },
-      }),
+          deps: [HttpClient]
+        }
+      })
     ),
     provideAnimations(),
-    provideRouter(routes,
+    provideRouter(
+      routes,
       withInMemoryScrolling({
         anchorScrolling: 'enabled',
-        scrollPositionRestoration: 'enabled',
-      }),
+        scrollPositionRestoration: 'enabled'
+      })
     ),
     provideHttpClient(),
     provideMarkdown({
@@ -46,21 +54,19 @@ export const appConfig: ApplicationConfig = {
       markedOptions: {
         provide: MARKED_OPTIONS,
         useFactory: markedOptionsFactory,
-        deps: [AnchorService],
+        deps: [AnchorService]
       },
-      markedExtensions: [
-        gfmHeadingId(),
-      ],
+      markedExtensions: [gfmHeadingId()],
       clipboardOptions: {
         provide: CLIPBOARD_OPTIONS,
-        useValue: { buttonComponent: ClipboardButtonComponent },
+        useValue: { buttonComponent: ClipboardButtonComponent }
       },
-      sanitize: SecurityContext.NONE,
+      sanitize: SecurityContext.NONE
     }),
     //    'locationId': 'europe-west',
 
-    provideFirebaseApp(
-      () => initializeApp({
+    provideFirebaseApp(() =>
+      initializeApp({
         projectId: 'nonodev96-c612b',
         appId: '1:174307120114:web:c62516012c612a127ed16b',
         databaseURL: 'https://nonodev96-c612b.firebaseio.com',
@@ -68,11 +74,9 @@ export const appConfig: ApplicationConfig = {
         apiKey: 'AIzaSyCyD3tdXxx7QF-avPSb5Hil_-BuYjCmDlY',
         authDomain: 'nonodev96-c612b.firebaseapp.com',
         messagingSenderId: '174307120114',
-        measurementId: 'G-G1EKEHJB4S',
+        measurementId: 'G-G1EKEHJB4S'
       })
     ),
-    provideFirestore(
-      () => getFirestore()
-    ),
+    provideFirestore(() => getFirestore())
   ]
 };

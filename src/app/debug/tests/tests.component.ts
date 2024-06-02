@@ -11,14 +11,21 @@ import { HtmlService } from '@app/services/html/html.service';
 @Component({
   selector: 'nn-debug-tests',
   standalone: true,
-  imports: [CommonModule, ButtonModule, SharedModule, TimelineModule, ToastModule, TranslateModule],
+  imports: [
+    CommonModule,
+    ButtonModule,
+    SharedModule,
+    TimelineModule,
+    ToastModule,
+    TranslateModule
+  ],
   templateUrl: './tests.component.html',
   styleUrl: './tests.component.scss'
 })
 export class TestsComponent {
-  public translate = inject(TranslateService)
-  public messageService = inject(MessageService)
-  public htmlService = inject(HtmlService)
+  public translate = inject(TranslateService);
+  public messageService = inject(MessageService);
+  public htmlService = inject(HtmlService);
 
   events = [
     {
@@ -28,30 +35,46 @@ export class TestsComponent {
       color: '#9C27B0',
       image: 'game-controller.jpg'
     },
-    { status: 'Processing', date: '15/10/2020 14:00', icon: 'pi pi-cog', color: '#673AB7' },
-    { status: 'Shipped', date: '15/10/2020 16:15', icon: 'pi pi-shopping-cart', color: '#FF9800' },
-    { status: 'Delivered', date: '16/10/2020 10:00', icon: 'pi pi-check', color: '#607D8B' }
+    {
+      status: 'Processing',
+      date: '15/10/2020 14:00',
+      icon: 'pi pi-cog',
+      color: '#673AB7'
+    },
+    {
+      status: 'Shipped',
+      date: '15/10/2020 16:15',
+      icon: 'pi pi-shopping-cart',
+      color: '#FF9800'
+    },
+    {
+      status: 'Delivered',
+      date: '16/10/2020 10:00',
+      icon: 'pi pi-check',
+      color: '#607D8B'
+    }
   ];
-
 
   changeLanguage(selected: Language_t) {
     switch (selected) {
       case 'es-ES':
-        this.translate.use('es-ES')
-        break
+        this.translate.use('es-ES');
+        break;
       case 'en-GB':
-        this.translate.use('en-GB')
-        break
+        this.translate.use('en-GB');
+        break;
       default:
-        this.translate.use('es-ES')
+        this.translate.use('es-ES');
     }
   }
 
-  parseYAML() {
-
-  }
+  parseYAML() {}
 
   message() {
-    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success',
+      detail: 'Message Content'
+    });
   }
 }

@@ -11,10 +11,17 @@ import { HeaderComponent } from '@app/components/header/header.component';
 @Component({
   selector: 'nn-article',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, BreadcrumbComponent, ToastModule, ConfigComponent, FooterComponent, TopbarComponent, HeaderComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    BreadcrumbComponent,
+    ToastModule,
+    ConfigComponent,
+    FooterComponent,
+    TopbarComponent,
+    HeaderComponent
+  ],
   templateUrl: './layout-article.component.html',
   styleUrl: './layout-article.component.scss'
 })
-export class LayoutArticleComponent {
-
-}
+export class LayoutArticleComponent {}

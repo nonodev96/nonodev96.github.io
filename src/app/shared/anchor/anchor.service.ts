@@ -4,11 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AnchorService {
-
-  private locationStrategy = inject(LocationStrategy)
-  private route = inject(ActivatedRoute)
-  private router = inject(Router)
-  private viewportScroller = inject(ViewportScroller)
+  private locationStrategy = inject(LocationStrategy);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private viewportScroller = inject(ViewportScroller);
 
   interceptClick(event: Event): void {
     const element = event.target;
@@ -50,9 +49,13 @@ export class AnchorService {
   }
 
   private getUrlTree(url: string) {
-    const urlPath = this.stripFragment(url) || this.stripFragment(this.router.url);
+    const urlPath =
+      this.stripFragment(url) || this.stripFragment(this.router.url);
     const urlFragment = this.router.parseUrl(url).fragment || undefined;
-    return this.router.createUrlTree([urlPath], { relativeTo: this.route, fragment: urlFragment });
+    return this.router.createUrlTree([urlPath], {
+      relativeTo: this.route,
+      fragment: urlFragment
+    });
   }
 
   private isExternalUrl(url: string): boolean {
@@ -60,13 +63,12 @@ export class AnchorService {
   }
 
   private isRouterLink(element: HTMLAnchorElement): boolean {
-    return element.getAttributeNames().some(n => n.startsWith('_ngcontent'));
+    return element.getAttributeNames().some((n) => n.startsWith('_ngcontent'));
   }
 
   private stripFragment(url: string): string {
-    const template = /[^#]*/.exec(url)
-    if (template)
-      return template[0];
-    return ''
+    const template = /[^#]*/.exec(url);
+    if (template) return template[0];
+    return '';
   }
 }

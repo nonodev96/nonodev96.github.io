@@ -6,12 +6,10 @@
  * https://prismjs.com/extending.html
  */
 
-
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 declare let Prism: any;
 
 Prism.languages.typescript = Prism.languages.extend('typescript', {
-
   'class-name': [
     // existing pattern
     Prism.languages.typescript['class-name'],
@@ -24,14 +22,14 @@ Prism.languages.typescript = Prism.languages.extend('typescript', {
     {
       pattern: /(:)([^,()={][A-Z]{1}[^,()={]+)/,
       lookbehind: true,
-      inside: Prism.languages.typescript,
+      inside: Prism.languages.typescript
     },
 
     // new Foo();
     // new Foo.Bar();
     {
       pattern: /\b(new\s.*\.|new\s)([^(]+)/,
-      lookbehind: true,
+      lookbehind: true
     },
 
     // import { foo, bar } from 'baz';
@@ -40,9 +38,9 @@ Prism.languages.typescript = Prism.languages.extend('typescript', {
       lookbehind: true,
       inside: {
         'import-member': /([^,]+)/,
-        punctuation: /(,)/,
-      },
-    },
+        punctuation: /(,)/
+      }
+    }
 
     // TODO: not correctly highlighted
     // - `Baz` in `export class Foo implements Bar, Baz`
@@ -57,8 +55,8 @@ Prism.languages.typescript = Prism.languages.extend('typescript', {
     // foo: () => Bar;
     {
       pattern: /\b\S+\s*[=]\s*\(.*\).*/,
-      inside: Prism.languages.typescript,
-    },
+      inside: Prism.languages.typescript
+    }
   ],
 
   keyword: [
@@ -66,8 +64,8 @@ Prism.languages.typescript = Prism.languages.extend('typescript', {
     ...Prism.languages.typescript.keyword,
 
     // constructor()
-    /\b(?:constructor)\b/,
-  ],
+    /\b(?:constructor)\b/
+  ]
 });
 
 Prism.languages.ts = Prism.languages.typescript;

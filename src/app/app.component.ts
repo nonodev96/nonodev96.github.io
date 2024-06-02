@@ -14,7 +14,17 @@ import { ConfigService } from './services/config/config.service';
 @Component({
   selector: 'nn-root',
   standalone: true,
-  imports: [TranslateModule, CommonModule, RouterOutlet, MarkdownComponent, ButtonModule, TimelineModule, CardModule, ToastModule, ConfigComponent],
+  imports: [
+    TranslateModule,
+    CommonModule,
+    RouterOutlet,
+    MarkdownComponent,
+    ButtonModule,
+    TimelineModule,
+    CardModule,
+    ToastModule,
+    ConfigComponent
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -23,18 +33,16 @@ import { ConfigService } from './services/config/config.service';
     {
       provide: CLIPBOARD_OPTIONS,
       useValue: {}
-    },
+    }
   ]
 })
 export class AppComponent {
-
-  private translate = inject(TranslateService)
+  private translate = inject(TranslateService);
   title = 'nonodev96.github.io';
-  configService = inject(ConfigService)
+  configService = inject(ConfigService);
 
   constructor() {
     this.translate.setDefaultLang('en-GB');
     this.translate.use('en-GB');
   }
-
 }

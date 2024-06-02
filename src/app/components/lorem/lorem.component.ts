@@ -8,6 +8,4 @@ import { CommonModule } from '@angular/common';
   templateUrl: './lorem.component.html',
   styleUrl: './lorem.component.scss'
 })
-export class LoremComponent {
-
-}
+export class LoremComponent {}

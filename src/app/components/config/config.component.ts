@@ -16,15 +16,25 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'nn-config',
   standalone: true,
-  imports: [CommonModule, ButtonModule, MenuComponent, SidebarModule, RouterLink, MessagesModule, FormsModule, DropdownModule, InputGroupModule, InputGroupAddonModule],
+  imports: [
+    CommonModule,
+    ButtonModule,
+    MenuComponent,
+    SidebarModule,
+    RouterLink,
+    MessagesModule,
+    FormsModule,
+    DropdownModule,
+    InputGroupModule,
+    InputGroupAddonModule
+  ],
   templateUrl: './config.component.html',
   styleUrl: './config.component.scss'
 })
 export class ConfigComponent {
-
-  private router = inject(Router)
-  private messageService = inject(MessageService)
-  private configService = inject(ConfigService)
+  private router = inject(Router);
+  private messageService = inject(MessageService);
+  public configService = inject(ConfigService);
 
   themes: { theme: string }[] = [
     { theme: 'bootstrap4-light-blue' },
@@ -73,26 +83,26 @@ export class ConfigComponent {
     { theme: 'luna-blue' },
     { theme: 'luna-green' },
     { theme: 'luna-pink' },
-    { theme: 'rhea' },
+    { theme: 'rhea' }
   ];
   filterValue = '';
   selectedCountry = '';
 
-
   constructor() {
     this.router.events.pipe(
-      filter(event => event instanceof NavigationError),
-      tap(_event => {
-        console.log('error', { _event })
+      filter((event) => event instanceof NavigationError),
+      tap((_event) => {
+        console.log('error', { _event });
       })
     );
   }
 
   goTo(link: string | string[]) {
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    this.router.navigate(link as any[])
+    this.router
+      .navigate(link as any[])
       .then(() => {
-        this.configService.sidebarConfigVisible = false
+        this.configService.sidebarConfigVisible = false;
       })
       .catch(() => {
         if (link)
@@ -103,12 +113,11 @@ export class ConfigComponent {
           });
         this.router.navigate(['/error404']);
       })
-      .finally(() => {
-      });
+      .finally(() => { });
   }
 
   close() {
-    this.configService.sidebarConfigVisible = false
+    this.configService.sidebarConfigVisible = false;
   }
 
   resetFunction(options: DropdownFilterOptions) {
@@ -125,7 +134,7 @@ export class ConfigComponent {
   }
 
   onChangeSelectedTheme($event: { theme: string }) {
-    const { theme } = $event
-    this.configService.setTheme(theme)
+    const { theme } = $event;
+    this.configService.setTheme(theme);
   }
 }

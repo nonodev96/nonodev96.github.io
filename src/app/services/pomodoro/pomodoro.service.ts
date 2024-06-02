@@ -5,7 +5,6 @@ import { type Observable, Subject, timer, takeUntil, Subscription } from 'rxjs';
   providedIn: 'root'
 })
 export class PomodoroService {
-
   private status$ = new Subject<boolean>();
   private timer$ = new Subject<number>();
   private counter$ = new Subject<number>();
@@ -15,14 +14,12 @@ export class PomodoroService {
   private countdownDuration: number = 25 * 60;
 
   startTimer(): void {
-    this.stopTimer()
+    this.stopTimer();
     this.status$.next(true);
 
     this.countdownTimer = timer(0, 1000)
       .pipe(takeUntil(this.status$))
       .subscribe(() => {
-
-
         if (this.countdownDuration <= 0) {
           this.stopTimer();
           this.counter++;

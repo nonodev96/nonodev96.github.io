@@ -12,8 +12,6 @@ import type { MenuItem } from 'primeng/api';
   styleUrl: './menu.component.scss'
 })
 export class MenuComponent {
-
-
   items: MenuItem[] = [
     {
       label: 'Options',
@@ -22,7 +20,7 @@ export class MenuComponent {
           label: 'Refresh',
           escape: false,
           icon: 'pi pi-refresh',
-          iconClass: 'text-xl',
+          iconClass: 'text-xl'
         },
         {
           label: 'Delete',
@@ -50,5 +48,4 @@ export class MenuComponent {
       ]
     }
   ];
-
 }

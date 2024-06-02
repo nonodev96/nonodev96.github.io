@@ -7,6 +7,4 @@ import { Component } from '@angular/core';
   templateUrl: './overview-card.component.html',
   styleUrl: './overview-card.component.scss'
 })
-export class OverviewCardComponent {
-
-}
+export class OverviewCardComponent {}

@@ -12,10 +12,19 @@ import { HeaderComponent } from '@app/components/header/header.component';
 @Component({
   selector: 'nn-layout-main',
   standalone: true,
-  imports: [CommonModule, ConfigComponent, RouterOutlet, TopbarComponent, BreadcrumbComponent, FooterComponent, MessagesModule, ToastModule, HeaderComponent, HeaderComponent],
+  imports: [
+    CommonModule,
+    ConfigComponent,
+    RouterOutlet,
+    TopbarComponent,
+    BreadcrumbComponent,
+    FooterComponent,
+    MessagesModule,
+    ToastModule,
+    HeaderComponent,
+    HeaderComponent
+  ],
   templateUrl: './layout-main.component.html',
   styleUrl: './layout-main.component.scss'
 })
-export class LayoutMainComponent {
-
-}
+export class LayoutMainComponent {}

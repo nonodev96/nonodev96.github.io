@@ -8,10 +8,14 @@ import { SidebarComponent } from '@app/components/sidebar/sidebar.component';
 @Component({
   selector: 'nn-topbar',
   standalone: true,
-  imports: [CommonModule, ButtonModule, BreadcrumbComponent, MenuComponent, SidebarComponent],
+  imports: [
+    CommonModule,
+    ButtonModule,
+    BreadcrumbComponent,
+    MenuComponent,
+    SidebarComponent
+  ],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss'
 })
-export class TopbarComponent {
-
-}
+export class TopbarComponent {}

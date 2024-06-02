@@ -7,12 +7,10 @@ import { BlogService } from '@app/services/blog/blog.service';
   providedIn: 'root'
 })
 export class PostResolverService {
-  private route = inject(ActivatedRouteSnapshot)
-  private readonly blogService = inject(BlogService)
+  private readonly blogService = inject(BlogService);
 
-  async resolve(): Promise<Post_t> {
-    const slug = this.route.params['slug'];
+  async resolve(route: ActivatedRouteSnapshot): Promise<Post_t> {
+    const slug = route.params['slug'];
     return await this.blogService.getPostMatterBySlug(slug);
   }
-
 }

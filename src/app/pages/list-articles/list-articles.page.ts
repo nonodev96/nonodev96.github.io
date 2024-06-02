@@ -15,6 +15,8 @@ import { ChipModule } from 'primeng/chip';
 import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from 'primeng/inputtext';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 
 import { BlogService } from '@app/services/blog/blog.service';
 import { Post_t } from '@app/models/Posts';
@@ -24,7 +26,14 @@ import { EchartComponent } from '@app/components/echart/echart.component';
   standalone: true,
   templateUrl: './list-articles.page.html',
   styleUrl: './list-articles.page.scss',
-  imports: [CommonModule, ButtonModule, MultiSelectModule, RouterLink, CardModule, RippleModule, SkeletonModule, DataViewModule, DropdownModule, TagModule, ChipModule, InputTextModule, FormsModule, EchartComponent]
+  imports: [
+    CommonModule, ButtonModule, MultiSelectModule,
+    RouterLink, CardModule, RippleModule,
+    SkeletonModule, DataViewModule, DropdownModule,
+    IconFieldModule, InputIconModule,
+    TagModule, ChipModule, InputTextModule,
+    FormsModule, EchartComponent
+  ]
 })
 export class ListArticlesPage implements OnInit {
   listArticlesMatter_signal = signal<Post_t[]>([])

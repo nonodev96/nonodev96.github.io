@@ -59,22 +59,20 @@ export const appConfig: ApplicationConfig = {
     }),
     //    'locationId': 'europe-west',
 
-    importProvidersFrom(
-      provideFirebaseApp(
-        () => initializeApp({
-          'projectId': 'nonodev96-c612b',
-          'appId': '1:174307120114:web:c62516012c612a127ed16b',
-          'databaseURL': 'https://nonodev96-c612b.firebaseio.com',
-          'storageBucket': 'nonodev96-c612b.appspot.com',
-          'apiKey': 'AIzaSyCyD3tdXxx7QF-avPSb5Hil_-BuYjCmDlY',
-          'authDomain': 'nonodev96-c612b.firebaseapp.com',
-          'messagingSenderId': '174307120114',
-          'measurementId': 'G-G1EKEHJB4S',
-        })
-      )),
-    importProvidersFrom(
-      provideFirestore(
-        () => getFirestore()
-      )),
+    provideFirebaseApp(
+      () => initializeApp({
+        'projectId': 'nonodev96-c612b',
+        'appId': '1:174307120114:web:c62516012c612a127ed16b',
+        'databaseURL': 'https://nonodev96-c612b.firebaseio.com',
+        'storageBucket': 'nonodev96-c612b.appspot.com',
+        'apiKey': 'AIzaSyCyD3tdXxx7QF-avPSb5Hil_-BuYjCmDlY',
+        'authDomain': 'nonodev96-c612b.firebaseapp.com',
+        'messagingSenderId': '174307120114',
+        'measurementId': 'G-G1EKEHJB4S',
+      })
+    ),
+    provideFirestore(
+      () => getFirestore()
+    ),
   ]
 };

@@ -30,7 +30,7 @@ export class MenuComponent {
           icon: 'pi pi-times',
           iconClass: 'text-xl',
           styleClass: 'red',
-          badge: "5"
+          badge: '5'
         }
       ]
     },

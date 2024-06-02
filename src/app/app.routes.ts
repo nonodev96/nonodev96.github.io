@@ -1,4 +1,4 @@
-import { Data, Routes } from '@angular/router';
+import type { Data, Routes } from '@angular/router';
 
 import { TestsComponent } from '@app/debug/tests/tests.component';
 import { LoremComponent } from '@app/components/lorem/lorem.component';
@@ -61,7 +61,9 @@ export const routes: Routes = [
         path: ':slug',
         data: {
           breadcrumb: (data: Data) => {
-            return `Post | ${data['post'].title}`
+            if (data?.post)
+              return `Post | ${data.post.title}`
+            return 'Post'
           }
         },
         resolve: { post: PostResolverService },

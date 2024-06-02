@@ -1,16 +1,17 @@
-import { Component, OnDestroy, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Component, type OnDestroy, type OnInit, inject, signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Meta, Title } from '@angular/platform-browser';
 import { MarkdownComponent } from 'ngx-markdown';
 
 import matter from 'front-matter';
 import { PostComponent } from '@app/components/post/post.component';
 import { BlogService } from '@app/services/blog/blog.service';
-import { Matter_t } from '@app/types';
+import type { Matter_t } from '@app/types';
 import { MessageService } from 'primeng/api';
-import { Meta, Title } from '@angular/platform-browser';
-import { Post_t } from '@app/models/Posts';
 import { toPost } from '@app/shared/utils';
+
+import type { Post_t } from '@app/models/Posts';
 
 @Component({
   selector: 'nn-posts-page',
@@ -20,6 +21,13 @@ import { toPost } from '@app/shared/utils';
   styleUrl: './post.page.scss'
 })
 export class PostPage implements OnInit, OnDestroy {
+
+  private activatedRoute = inject(ActivatedRoute)
+  private titleService = inject(Title)
+  private metaService = inject(Meta)
+
+  public messageService = inject(MessageService)
+  public blogService = inject(BlogService)
 
   post = signal<Post_t>({
     postId: 0,
@@ -35,30 +43,22 @@ export class PostPage implements OnInit, OnDestroy {
     content: ''
   });
 
-  // urlTree: UrlTree = new UrlTree();
-
-  constructor(public blogService: BlogService,
-    public messageService: MessageService,
-    private activatedRoute: ActivatedRoute,
-    private titleService: Title,
-    private metaService: Meta
-  ) { }
-
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
-      const slug: string = params.get('slug')!
-      console.log({ params });
-
-      this.blogService
-        .getPostBySlug(slug)
-        .then((post) => {
-          const { attributes, body } = matter(post) as Matter_t
-          this.titleService.setTitle(attributes.title);
-          this.metaService.addTag({ name: 'author', content: attributes.authors.map((a) => a.name).join(', ') })
-
-          this.post.set(toPost(attributes, body))
-        })
-
+    this.activatedRoute.paramMap.subscribe((params) => {
+      const slug = params.get('slug')
+      if (slug) {
+        this.blogService
+          .getPostBySlug(slug)
+          .then((post) => {
+            const { attributes, body } = matter(post) as Matter_t
+            this.titleService.setTitle(attributes.title);
+            this.metaService.addTag({
+              name: 'author',
+              content: attributes.authors.map((a) => a.name).join(', ')
+            })
+            this.post.set(toPost(attributes, body))
+          })
+      }
     });
   }
 

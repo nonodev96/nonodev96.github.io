@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { KatexOptions, MarkdownComponent } from 'ngx-markdown';
 import { ButtonModule } from 'primeng/button';
 import { ChipModule } from 'primeng/chip';
-import { PostAuthor_t, PostAuthors_t, PostChips_t } from '@app/models/Posts';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { AvatarModule } from 'primeng/avatar';
 import { TooltipModule } from 'primeng/tooltip';
 import { TagModule } from 'primeng/tag';
+import { type KatexOptions, MarkdownComponent } from 'ngx-markdown';
+import type { PostAuthor_t, PostAuthors_t, PostChips_t } from '@app/models/Posts';
 
 @Component({
   selector: 'nn-post',
@@ -22,10 +22,10 @@ export class PostComponent {
   date = new Date().toLocaleString()
 
   @Input({ required: true })
-  title: string = 'How To Get Started Tutorial'
+  title = 'How To Get Started Tutorial'
 
   @Input({ required: true })
-  cover: string = 'assets/development/cover.png'
+  cover = 'assets/development/cover.png'
 
   @Input({ required: true })
   chips: PostChips_t = [
@@ -47,11 +47,11 @@ export class PostComponent {
   categories: string[] = []
 
   @Input({ required: true })
-  summary: string = 'Sodales massa, morbi convallis'
+  summary = 'Sodales massa, morbi convallis'
 
 
   @Input({ required: true })
-  content: string = '';
+  content = '';
 
 
   components = {
@@ -71,6 +71,6 @@ export class PostComponent {
   }
 
   openTwitter(author: PostAuthor_t) {
-    window.open('https://twitter.com/' + author.name, '_blank');
+    window.open(`https://twitter.com/${author.name}`, '_blank');
   }
 }

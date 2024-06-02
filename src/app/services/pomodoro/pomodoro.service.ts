@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, timer, takeUntil } from 'rxjs';
+import { type Observable, Subject, timer, takeUntil, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class PomodoroService {
   private counter$ = new Subject<number>();
   private counter = 0;
 
-  private countdownTimer: any;
+  private countdownTimer = new Subscription();
   private countdownDuration: number = 25 * 60;
 
   startTimer(): void {
@@ -26,7 +26,7 @@ export class PomodoroService {
         if (this.countdownDuration <= 0) {
           this.stopTimer();
           this.counter++;
-          this.counter$.next(this.counter)
+          this.counter$.next(this.counter);
         } else {
           this.countdownDuration--;
           this.timer$.next(this.countdownDuration);
@@ -37,7 +37,7 @@ export class PomodoroService {
   stopTimer(): void {
     if (this.countdownTimer) {
       this.countdownTimer.unsubscribe();
-      this.status$.next(false)
+      this.status$.next(false);
     }
   }
 

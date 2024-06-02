@@ -1,5 +1,5 @@
-import { MarkedOptions, MarkedRenderer } from 'ngx-markdown';
-import { AnchorService } from '@shared/anchor';
+import { type MarkedOptions, MarkedRenderer } from 'ngx-markdown';
+import type { AnchorService } from '@shared/anchor';
 
 export function markedOptionsFactory(anchorService: AnchorService): MarkedOptions {
   const renderer = new MarkedRenderer();

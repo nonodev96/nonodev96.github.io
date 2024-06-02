@@ -1,15 +1,15 @@
-import { Component, OnInit, computed, signal } from '@angular/core';
+import { Component, type OnInit, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
-import { SelectItem } from 'primeng/api';
+import type { SelectItem } from 'primeng/api';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { SkeletonModule } from 'primeng/skeleton';
 import { DataViewModule } from 'primeng/dataview';
-import { DropdownModule } from 'primeng/dropdown';
+import { type DropdownChangeEvent, DropdownModule } from 'primeng/dropdown';
 import { TagModule } from 'primeng/tag';
 import { ChipModule } from 'primeng/chip';
 import { RippleModule } from 'primeng/ripple';
@@ -19,7 +19,7 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 
 import { BlogService } from '@app/services/blog/blog.service';
-import { Post_t } from '@app/models/Posts';
+import type { Post_t } from '@app/models/Posts';
 import { EchartComponent } from '@app/components/echart/echart.component';
 @Component({
   selector: 'nn-list-articles',
@@ -36,10 +36,15 @@ import { EchartComponent } from '@app/components/echart/echart.component';
   ]
 })
 export class ListArticlesPage implements OnInit {
+
+  private titleService = inject(Title)
+  private blogService = inject(BlogService)
+
   listArticlesMatter_signal = signal<Post_t[]>([])
   searchQuery = signal<string>('');
 
   items = computed<Post_t[]>(() => {
+    // biome-ignore lint/suspicious/noMisleadingCharacterClass: <explanation>
     const normalizeString = (str: string) => { return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '') };
     const sq = normalizeString(this.searchQuery().toLowerCase());
     const articles = this.listArticlesMatter_signal();
@@ -62,18 +67,10 @@ export class ListArticlesPage implements OnInit {
     { label: 'Title ascending', value: 'title' },
     { label: 'Title descending', value: '!title' },
   ];
-  sortOrder: number = 0;
-  sortField: string = '';
-
+  sortOrder = 0;
+  sortField = '';
   layout: 'list' | 'grid' = 'list';
-  search: string = ''
-
-
-  constructor(
-    public blogService: BlogService,
-    private titleService: Title
-  ) {
-  }
+  search = ''
 
   ngOnInit(): void {
     this.titleService.setTitle('Artículos de programación')
@@ -101,7 +98,7 @@ export class ListArticlesPage implements OnInit {
       });
   }
 
-  onSortChange(event: any) {
+  onSortChange(event: DropdownChangeEvent) {
     const value = event.value;
 
     if (value.indexOf('!') === 0) {

@@ -1,16 +1,14 @@
+import { Injectable, inject } from '@angular/core';
 import { LocationStrategy, ViewportScroller } from '@angular/common';
-import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router, UrlTree } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AnchorService {
 
-  constructor(
-    private locationStrategy: LocationStrategy,
-    private route: ActivatedRoute,
-    private router: Router,
-    private viewportScroller: ViewportScroller,
-  ) { }
+  private locationStrategy = inject(LocationStrategy)
+  private route = inject(ActivatedRoute)
+  private router = inject(Router)
+  private viewportScroller = inject(ViewportScroller)
 
   interceptClick(event: Event): void {
     const element = event.target;
@@ -46,11 +44,12 @@ export class AnchorService {
       this.navigate(this.router.url, true);
     }
   }
+
   setOffset(...params: Parameters<ViewportScroller['setOffset']>): void {
     this.viewportScroller.setOffset(...params);
   }
 
-  private getUrlTree(url: string): UrlTree {
+  private getUrlTree(url: string) {
     const urlPath = this.stripFragment(url) || this.stripFragment(this.router.url);
     const urlFragment = this.router.parseUrl(url).fragment || undefined;
     return this.router.createUrlTree([urlPath], { relativeTo: this.route, fragment: urlFragment });
@@ -65,6 +64,9 @@ export class AnchorService {
   }
 
   private stripFragment(url: string): string {
-    return /[^#]*/.exec(url)![0];
+    const template = /[^#]*/.exec(url)
+    if (template)
+      return template[0];
+    return ''
   }
 }

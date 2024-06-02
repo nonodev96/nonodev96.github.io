@@ -12,6 +12,6 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
-  sidebarVisible: boolean = false;
+  sidebarVisible = false;
 
 }

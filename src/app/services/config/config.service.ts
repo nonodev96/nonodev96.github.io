@@ -1,18 +1,19 @@
 import { DOCUMENT } from '@angular/common';
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, inject } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConfigService {
 
-  sidebarConfigVisible: boolean = false;
+  sidebarConfigVisible = false;
   theme = 'bootstrap4-light-blue';
+  @Inject(DOCUMENT)
+  private document = inject(Document)
 
-  constructor(@Inject(DOCUMENT) private document: Document) { }
 
-  setTheme(theme: any) {
+  setTheme(theme: string) {
     const themeLink = this.document.getElementById('app-theme') as HTMLLinkElement
-    themeLink.href = theme + '.css'
+    themeLink.href = `${theme}.css`
   }
 }

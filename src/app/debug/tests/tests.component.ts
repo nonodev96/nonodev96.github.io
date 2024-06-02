@@ -1,21 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { MessageService, SharedModule } from 'primeng/api';
 import { TimelineModule } from 'primeng/timeline';
 import { ToastModule } from 'primeng/toast';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { Language_t } from '@app/types';
+import type { Language_t } from '@app/types';
 import { HtmlService } from '@app/services/html/html.service';
 
 @Component({
   selector: 'nn-debug-tests',
   standalone: true,
-    imports: [CommonModule, ButtonModule, SharedModule, TimelineModule, ToastModule, TranslateModule],
+  imports: [CommonModule, ButtonModule, SharedModule, TimelineModule, ToastModule, TranslateModule],
   templateUrl: './tests.component.html',
   styleUrl: './tests.component.scss'
 })
 export class TestsComponent {
+  public translate = inject(TranslateService)
+  public messageService = inject(MessageService)
+  public htmlService = inject(HtmlService)
+
   events = [
     {
       status: 'Ordered',
@@ -29,10 +33,6 @@ export class TestsComponent {
     { status: 'Delivered', date: '16/10/2020 10:00', icon: 'pi pi-check', color: '#607D8B' }
   ];
 
-  constructor(public translate: TranslateService,
-              public messageService: MessageService,
-              public htmlService: HtmlService) {
-  }
 
   changeLanguage(selected: Language_t) {
     switch (selected) {

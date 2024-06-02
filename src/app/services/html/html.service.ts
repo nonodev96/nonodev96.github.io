@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 
 @Injectable({
@@ -6,9 +6,8 @@ import { Title, Meta } from '@angular/platform-browser';
 })
 export class HtmlService {
 
-  constructor(private titleService: Title,
-              private metaService: Meta) {
-  }
+  private metaService = inject(Meta)
+  private titleService = inject(Title)
 
   updateTitle(newTitle = 'Nuevo Título de la Página') {
     this.titleService.setTitle(newTitle);

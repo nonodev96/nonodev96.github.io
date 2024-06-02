@@ -1,4 +1,4 @@
-import { Post_t } from '@app/models/Posts';
+import type { Post_t } from '@app/models/Posts';
 
 export type Language_t = 'es-ES' | 'en-GB'
 

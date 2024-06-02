@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Firestore, collection, collectionData, doc, getDoc } from '@angular/fire/firestore';
+import type { Observable } from 'rxjs';
 import matter from 'front-matter';
 
-import { InfoBlog_t, FileBlog_t, Matter_t } from '@app/types';
-import { Post_t } from '@app/models/Posts';
-import { Firestore, collection, collectionData, doc, getDoc } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import type { InfoBlog_t, FileBlog_t, Matter_t } from '@app/types';
+import type { Post_t } from '@app/models/Posts';
 import { toPost } from '@app/shared/utils';
 
 
@@ -14,12 +13,12 @@ import { toPost } from '@app/shared/utils';
   providedIn: 'root'
 })
 export class BlogService {
+  private http = inject(HttpClient)
+  private firestore = inject(Firestore)
+
   private apiUrl_ListArticles = '/assets/blog/list-articles.json';
   private apiUrl_Post = '/assets/blog/';
 
-  constructor(private http: HttpClient,
-    private firestore: Firestore) {
-  }
 
   async getListPosts(): Promise<InfoBlog_t> {
     const response = await fetch(this.apiUrl_ListArticles);
@@ -53,7 +52,7 @@ export class BlogService {
 
   async getPostMatterById(id: number): Promise<Post_t> {
     const listPosts: InfoBlog_t = await this.getListPosts();
-    const itemPost: FileBlog_t = listPosts.data.filter(item => item.id === parseInt(id.toString()))[0]
+    const itemPost: FileBlog_t = listPosts.data.filter(item => item.id === Number.parseInt(id.toString()))[0]
     const { filename } = itemPost
     return await this.getPostMatterByFilename(filename)
   }

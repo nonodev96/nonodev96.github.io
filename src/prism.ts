@@ -6,6 +6,8 @@
  * https://prismjs.com/extending.html
  */
 
+
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 declare let Prism: any;
 
 Prism.languages.typescript = Prism.languages.extend('typescript', {

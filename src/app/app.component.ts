@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { MarkdownComponent, CLIPBOARD_OPTIONS } from 'ngx-markdown';
@@ -27,11 +27,14 @@ import { ConfigService } from './services/config/config.service';
   ]
 })
 export class AppComponent {
-  title = 'nonodev96.github.io';
 
-  constructor(public translate: TranslateService, private configService: ConfigService) {
-    translate.setDefaultLang('en-GB');
-    translate.use('en-GB');
+  private translate = inject(TranslateService)
+  title = 'nonodev96.github.io';
+  configService = inject(ConfigService)
+
+  constructor() {
+    this.translate.setDefaultLang('en-GB');
+    this.translate.use('en-GB');
   }
 
 }

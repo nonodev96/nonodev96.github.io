@@ -1,4 +1,4 @@
-import { Component, OnInit, WritableSignal, signal } from '@angular/core';
+import { Component, type OnInit, type WritableSignal, inject, signal } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { PomodoroService } from '@app/services/pomodoro/pomodoro.service';
 import { KonamiService } from '@app/services/konami/konami.service';
@@ -12,13 +12,13 @@ import { KonamiService } from '@app/services/konami/konami.service';
 })
 export class PomodoroPage implements OnInit {
 
+  private pomodoroService = inject(PomodoroService)
+  private titleService = inject(Title)
+  private konamiService = inject(KonamiService)
+
   timerDisplay: WritableSignal<string> = signal('25:00');
   timerStatus: WritableSignal<boolean> = signal(false);
   counterDisplay: WritableSignal<string> = signal('000');
-
-  constructor(private pomodoroService: PomodoroService, private titleService: Title, private konamiService: KonamiService) {
-
-  }
 
   ngOnInit(): void {
     this.pomodoroService.getTimer()

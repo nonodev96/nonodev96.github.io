@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom, SecurityContext } from '@angular/core';
+import { type ApplicationConfig, importProvidersFrom, SecurityContext } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
@@ -61,14 +61,14 @@ export const appConfig: ApplicationConfig = {
 
     provideFirebaseApp(
       () => initializeApp({
-        'projectId': 'nonodev96-c612b',
-        'appId': '1:174307120114:web:c62516012c612a127ed16b',
-        'databaseURL': 'https://nonodev96-c612b.firebaseio.com',
-        'storageBucket': 'nonodev96-c612b.appspot.com',
-        'apiKey': 'AIzaSyCyD3tdXxx7QF-avPSb5Hil_-BuYjCmDlY',
-        'authDomain': 'nonodev96-c612b.firebaseapp.com',
-        'messagingSenderId': '174307120114',
-        'measurementId': 'G-G1EKEHJB4S',
+        projectId: 'nonodev96-c612b',
+        appId: '1:174307120114:web:c62516012c612a127ed16b',
+        databaseURL: 'https://nonodev96-c612b.firebaseio.com',
+        storageBucket: 'nonodev96-c612b.appspot.com',
+        apiKey: 'AIzaSyCyD3tdXxx7QF-avPSb5Hil_-BuYjCmDlY',
+        authDomain: 'nonodev96-c612b.firebaseapp.com',
+        messagingSenderId: '174307120114',
+        measurementId: 'G-G1EKEHJB4S',
       })
     ),
     provideFirestore(

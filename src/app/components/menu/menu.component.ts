@@ -14,36 +14,38 @@ import type { MenuItem } from 'primeng/api';
 export class MenuComponent {
   items: MenuItem[] = [
     {
-      label: 'Options',
+      label: 'Navegación',
       items: [
         {
-          label: 'Refresh',
-          escape: false,
-          icon: 'pi pi-refresh',
-          iconClass: 'text-xl'
+          label: 'Inicio',
+          icon: 'pi pi-home',
+          routerLink: '/'
         },
         {
-          label: 'Delete',
-          escape: false,
-          icon: 'pi pi-times',
-          iconClass: 'text-xl',
-          styleClass: 'red',
-          badge: '5'
+          label: 'Artículos',
+          icon: 'pi pi-book',
+          routerLink: '/article'
+        },
+        {
+          label: 'Pomodoro',
+          icon: 'pi pi-clock',
+          routerLink: '/pomodoro'
+        },
+        {
+          label: 'Dashboard',
+          icon: 'pi pi-chart-bar',
+          routerLink: '/dashboard'
         }
       ]
     },
     {
-      label: 'Navigate',
+      label: 'Externos',
       items: [
         {
-          label: 'Angular',
-          icon: 'pi pi-external-link',
-          url: 'https://angular.io'
-        },
-        {
-          label: 'Router',
-          icon: 'pi pi-upload',
-          routerLink: '/fileupload'
+          label: 'GitHub',
+          icon: 'pi pi-github',
+          url: 'https://github.com/nonodev96',
+          target: '_blank'
         }
       ]
     }

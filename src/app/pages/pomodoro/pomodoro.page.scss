@@ -1,5 +1,3 @@
-@import 'bootstrap';
-
 .pomodoro {
     text-align: center;
 
@@ -34,21 +32,6 @@
         &>button {
             margin: 0 1rem;
         }
-    }
-
-    &__button-start {
-        @extend .btn;
-        @extend .btn-primary;
-    }
-
-    &__button-stop {
-        @extend .btn;
-        @extend .btn-danger;
-    }
-
-    &__button-reset {
-        @extend .btn;
-        @extend .btn-secondary;
     }
 }
 

@@ -11,6 +11,11 @@
 npm-debug.log
 yarn-error.log
 
+# Lock files
+*-lock.json
+*-lock.yaml
+!pnpm-lock.yaml
+
 # IDEs and editors
 .idea/
 .project

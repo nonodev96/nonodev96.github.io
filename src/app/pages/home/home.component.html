@@ -1,1 +1,65 @@
-<p>home works!</p>
+<section class="home-hero py-5 text-center">
+  <img class="home-hero__avatar rounded-circle mb-3" src="assets/avatar.png" alt="Foto de perfil de Antonio Mudarra Machuca" width="120" height="120" />
+  <h1 class="home-hero__title">&#64;nonodev96</h1>
+  <p class="home-hero__subtitle">Antonio Mudarra Machuca</p>
+  <p class="home-hero__description t-balance">
+    Desarrollador de software apasionado por la tecnología, la educación y el código abierto.
+  </p>
+  <div class="d-flex justify-content-center flex-wrap gap-2 mt-3">
+    <a href="https://github.com/nonodev96" target="_blank" rel="noopener noreferrer" class="btn-social">
+      <i class="bi bi-github"></i> GitHub
+    </a>
+    <a href="https://twitter.com/nonodev96" target="_blank" rel="noopener noreferrer" class="btn-social">
+      <i class="bi bi-twitter-x"></i> Twitter
+    </a>
+    <a href="https://www.linkedin.com/in/nonodev96" target="_blank" rel="noopener noreferrer" class="btn-social">
+      <i class="bi bi-linkedin"></i> LinkedIn
+    </a>
+  </div>
+</section>
+
+<section class="home-nav py-4">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-3">
+
+    <div class="col">
+      <a [routerLink]="['/article']" class="home-nav__card text-decoration-none">
+        <div class="card h-100 text-center p-3">
+          <div class="home-nav__icon mb-2"><i class="pi pi-book"></i></div>
+          <h5 class="home-nav__label">Artículos</h5>
+          <p class="home-nav__desc">Blog con artículos técnicos y tutoriales.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="col">
+      <a [routerLink]="['/pomodoro']" class="home-nav__card text-decoration-none">
+        <div class="card h-100 text-center p-3">
+          <div class="home-nav__icon mb-2"><i class="pi pi-clock"></i></div>
+          <h5 class="home-nav__label">Pomodoro</h5>
+          <p class="home-nav__desc">Temporizador Pomodoro para gestionar el tiempo.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="col">
+      <a [routerLink]="['/dashboard']" class="home-nav__card text-decoration-none">
+        <div class="card h-100 text-center p-3">
+          <div class="home-nav__icon mb-2"><i class="pi pi-chart-bar"></i></div>
+          <h5 class="home-nav__label">Dashboard</h5>
+          <p class="home-nav__desc">Panel con estadísticas y datos de actividad.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="col">
+      <a href="https://github.com/nonodev96" target="_blank" rel="noopener noreferrer" class="home-nav__card text-decoration-none">
+        <div class="card h-100 text-center p-3">
+          <div class="home-nav__icon mb-2"><i class="pi pi-code"></i></div>
+          <h5 class="home-nav__label">Proyectos</h5>
+          <p class="home-nav__desc">Repositorios y proyectos en GitHub.</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
